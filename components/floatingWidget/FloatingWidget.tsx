@@ -142,7 +142,7 @@ export default function FloatingWidget() {
             <PetraAvatar className="w-12 h-12 shadow-lg" />
             <div className="flex flex-col justify-center">
               <h4 className="font-figtreeBold text-lg leading-none">
-                Petra Bot
+                Donn Williams
               </h4>
               <span className="text-sm font-IBM text-muted-foreground text-chatColors-manatee">
                 Have a question? ask away!

@@ -35,7 +35,8 @@ export default function PopoverContentWidget({
   const [chats, setChats] = useState<Chat[]>([
     {
       role: "assistant",
-      content: "Hello! my name is Petra Bot. How can I help you today?",
+      content:
+        "Hello! my name is Donn Williams. Please provide your preferred language",
       createdAt: new Date(),
     },
   ]);
