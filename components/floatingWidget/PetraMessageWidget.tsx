@@ -1,4 +1,4 @@
-import PetraAvatar from "@/components/floatingWidget/PetraAvatar";
+import DonnAvatar from "@/components/floatingWidget/DonnAvatar";
 import { cn } from "@/lib/utils";
 
 type PetraMessageWidgetProp = React.HTMLAttributes<HTMLDivElement>;
@@ -9,7 +9,7 @@ export default function PetraMessageWidget({
 }: PetraMessageWidgetProp) {
   return (
     <div className="flex flex-row gap-2 mb-4">
-      <PetraAvatar />
+      <DonnAvatar />
       <div className={"flex flex-col gap-1 max-w-[70%]"}>
         <h4 className="font-figtreeSemiBold leading-none">Donn</h4>
         <div

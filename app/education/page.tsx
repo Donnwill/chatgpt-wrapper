@@ -1,10 +1,9 @@
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import HomeContent from "@/components/home/HomeContent";
 
-export default function Home() {
+export default function EducationPage() { 
   return (
     <DashboardLayout>
-      <HomeContent />
+      <div></div>
     </DashboardLayout>
-  );
+  )
 }

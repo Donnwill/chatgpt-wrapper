@@ -8,8 +8,9 @@ import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Dashboard with ChatGPT Integration",
-  description: "A dashboard application with ChatGPT integration",
+  title: "Donn Williams",
+  description: "A Portfolio application with ChatGPT integration",
+  icons: "/assets/image/donn.jpeg",
 };
 
 export default function RootLayout({

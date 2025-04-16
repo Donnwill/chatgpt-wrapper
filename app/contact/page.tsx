@@ -1,10 +1,9 @@
 import DashboardLayout from "@/components/layout/DashboardLayout";
-import HomeContent from "@/components/home/HomeContent";
 
-export default function Home() {
+export default function ContactPage() { 
   return (
     <DashboardLayout>
-      <HomeContent />
+      <div></div>
     </DashboardLayout>
-  );
+  )
 }

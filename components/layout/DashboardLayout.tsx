@@ -2,7 +2,14 @@
 
 import React from "react";
 import Sidebar from "@/components/layout/Sidebar";
-import { LayoutDashboard, Settings } from "lucide-react";
+import {
+  CircleUser,
+  Briefcase,
+  ReceiptText,
+  Home,
+  GraduationCap,
+  Cpu,
+} from "lucide-react";
 import FloatingWidget from "../floatingWidget/FloatingWidget";
 import { usePathname } from "next/navigation";
 
@@ -11,14 +18,46 @@ interface DashboardLayoutProps {
 }
 
 const navigation = [
-  { name: "Dashboard", href: "/", icon: LayoutDashboard, current: true },
-  { name: "Settings", href: "/settings", icon: Settings, current: false },
+  { name: "Home", href: "/", icon: Home, current: true },
+  { name: "About Me", href: "/aboutme", icon: CircleUser, current: false },
+  {
+    name: "Education",
+    href: "/education",
+    icon: GraduationCap,
+    current: false,
+  },
+  { name: "Experience", href: "/experience", icon: Briefcase, current: false },
+  { name: "Skills", href: "/skills", icon: Cpu, current: false },
+  { name: "Contact", href: "/contact", icon: ReceiptText, current: false },
 ];
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const pathname = usePathname();
 
-  const isDashboard = pathname === "/";
+  const isHomePage = pathname === "/";
+  const isContactPage = pathname === "/contact";
+  const isExperiencePage = pathname === "/experience";
+  const isAboutMePage = pathname === "/aboutme";
+  const isEducationPage = pathname === "/education";
+  const isSkillsPage = pathname === "/skills";
+
+  function pageName() {
+    switch (true) {
+      case isHomePage:
+        return "Home";
+      case isAboutMePage:
+        return "About Me";
+      case isExperiencePage:
+        return "Experience";
+      case isContactPage:
+        return "Contact";
+      case isEducationPage:
+        return "Education";
+      case isSkillsPage:
+        return "Skills";
+    }
+  }
+
   return (
     <div className="h-screen w-screen flex flex-col overflow-hidden bg-background">
       {/* Mobile header */}
@@ -26,7 +65,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="flex flex-1 items-center justify-between">
           <Sidebar navigation={navigation} />
           <div className="flex-1 flex justify-center">
-            <h1 className="text-lg font-semibold text-foreground">Dashboard</h1>
+            <h1 className="text-lg font-semibold text-foreground">
+              {pageName()}
+            </h1>
           </div>
           <div className="w-9"></div> {/* spacer to center the title */}
         </div>
@@ -34,14 +75,16 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
       <div className="flex flex-1 overflow-hidden">
         {/* Desktop sidebar */}
-        <Sidebar navigation={navigation} />
+        <div className="hidden md:flex md:flex-shrink-0">
+          <Sidebar navigation={navigation} />
+        </div>
 
         <div className="flex flex-col flex-1 overflow-hidden">
-          <main className="flex-1 relative overflow-y-auto focus:outline-none">
+          <main className="flex-1 relative overflow-y-auto focus:outline-none bg-app-background">
             <div className="py-6">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                 <h1 className="text-2xl font-semibold text-foreground hidden md:block">
-                  {isDashboard ? "Dashboard" : "Settings"}
+                  {pageName()}
                 </h1>
               </div>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -51,8 +94,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           </main>
         </div>
       </div>
-      {/* The floating widget will only be visible in the dashboard page. */}
-      {isDashboard && <FloatingWidget />}
+      {isHomePage && <FloatingWidget />}
     </div>
   );
 }

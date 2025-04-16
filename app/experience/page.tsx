@@ -1,7 +1,7 @@
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export default function SettingsPage() {
+export default function WorkPage() {
     return (
         <DashboardLayout>
             <div className="space-y-6">

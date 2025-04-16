@@ -1,6 +1,6 @@
 import { Plus, X } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import PetraAvatar from "@/components/floatingWidget/PetraAvatar";
+import DonnAvatar from "@/components/floatingWidget/DonnAvatar";
 import PopoverContentWidget from "@/components/floatingWidget/PopoverContentWidget";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "../ui/button";
@@ -135,11 +135,11 @@ export default function FloatingWidget() {
           onClick={() => setIsPetraOpen(!isPetraOpen)}
           className="fixed bottom-10 right-10"
         >
-          <PetraAvatar className="w-12 h-12 shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl" />
+          <DonnAvatar className="w-12 h-12 shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl" />
         </PopoverTrigger>
         <PopoverContent className="w-[25rem] h-[33rem] m-2 mr-6 p-0">
           <div className="flex flex-row h-[4rem] pl-4 items-center gap-2">
-            <PetraAvatar className="w-12 h-12 shadow-lg" />
+            <DonnAvatar className="w-12 h-12 shadow-lg" />
             <div className="flex flex-col justify-center">
               <h4 className="font-figtreeBold text-lg leading-none">
                 Donn Williams
