@@ -9,6 +9,7 @@ import {
   Home,
   GraduationCap,
   Cpu,
+  FolderKanban,
 } from "lucide-react";
 import FloatingWidget from "../floatingWidget/FloatingWidget";
 import { usePathname } from "next/navigation";
@@ -28,6 +29,7 @@ const navigation = [
   },
   { name: "Experience", href: "/experience", icon: Briefcase, current: false },
   { name: "Skills", href: "/skills", icon: Cpu, current: false },
+  { name: "Projects", href: "/projects", icon: FolderKanban, current: false },
   { name: "Contact", href: "/contact", icon: ReceiptText, current: false },
 ];
 
@@ -40,6 +42,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const isAboutMePage = pathname === "/aboutme";
   const isEducationPage = pathname === "/education";
   const isSkillsPage = pathname === "/skills";
+  const isProjectsPage = pathname === "/projects";
 
   function pageName() {
     switch (true) {
@@ -50,11 +53,15 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       case isExperiencePage:
         return "💼 Experience";
       case isContactPage:
-        return "Contact";
+        return "🧾 Contact";
       case isEducationPage:
         return "🎓 Education";
       case isSkillsPage:
         return "👨‍💻🌐 Skills And Language";
+      case isProjectsPage:
+        return "📁 Projects";
+      default:
+        return "";
     }
   }
 

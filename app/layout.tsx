@@ -4,6 +4,7 @@ import "./globals.css";
 import { ConversationProvider } from "@/context/conversationContext";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Analytics } from "@vercel/analytics/react";
+import { ChatbotProvider } from "@/context/chatbotContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,12 +22,14 @@ export default function RootLayout({
   return (
     //Created ConversationProvider to preserve the chat conversation even when the users navigates to a different page and comes back
     <ConversationProvider>
-      <Analytics />
-      <TooltipProvider>
-        <html lang="en">
-          <body className={inter.className}>{children}</body>
-        </html>
-      </TooltipProvider>
+      <ChatbotProvider>
+        <Analytics />
+        <TooltipProvider>
+          <html lang="en">
+            <body className={inter.className}>{children}</body>
+          </html>
+        </TooltipProvider>
+      </ChatbotProvider>
     </ConversationProvider>
   );
 }

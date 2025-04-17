@@ -17,12 +17,13 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { useConversations } from "@/context/conversationContext";
 import TooltipWidget from "../tooltipWidget/TooltipWidget";
+import { useChatbot } from "@/context/chatbotContext";
 
 export default function FloatingWidget() {
   const { conversationState, conversationDispatch } = useConversations();
+  const { chatbotState, chatbotDispatch } = useChatbot();
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [isDonnOpen, setIsPetraOpen] = useState(true);
   const [newConversationName, setNewConversationName] = useState("");
   const [error, setError] = useState("");
 
@@ -132,9 +133,14 @@ export default function FloatingWidget() {
         </DialogContent>
       </Dialog>
       {/* Conversation popover */}
-      <Popover open={isDonnOpen}>
+      <Popover open={chatbotState.isChatbotOpen}>
         <PopoverTrigger
-          onClick={() => setIsPetraOpen(!isDonnOpen)}
+          onClick={() =>
+            chatbotDispatch({
+              type: "SET_CHATBOT_ACTIVE",
+              payload: !chatbotState.isChatbotOpen,
+            })
+          }
           className="fixed bottom-10 right-10"
         >
           <DonnAvatar
@@ -164,7 +170,12 @@ export default function FloatingWidget() {
             </TooltipWidget>
             <TooltipWidget tooltip="Close">
               <Button
-                onClick={() => setIsPetraOpen(false)}
+                onClick={() =>
+                  chatbotDispatch({
+                    type: "SET_CHATBOT_ACTIVE",
+                    payload: false,
+                  })
+                }
                 size={"icon"}
                 className="mr-2 w-8 h-8"
               >

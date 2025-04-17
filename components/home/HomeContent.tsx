@@ -35,7 +35,7 @@ export default function HomeContent() {
           up CI/CD pipelines using Jenkins and Azure and exploring new
           frameworks. On the backend, I’ve worked with Firebase, MongoDB,
           Supabase and MySQL, and recently, I’ve been diving into Next.js,
-          OpenAI integrations, and Rust-based microservices. My motto:{" "}
+          OpenAI integrations, and Rust-based microservices. <br /> My motto:{" "}
           <span className="italic font-bold">“Little better every day.”</span>
         </motion.p>
       </div>
