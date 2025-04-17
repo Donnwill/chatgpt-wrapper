@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import DonnAvatar from "../floatingWidget/DonnAvatar";
-import ExternalNavButton from "../floatingWidget/externalNavButton/ExternalNavButton";
+import ExternalNavButton from "../externalNavButton/ExternalNavButton";
 
 interface NavigationItem {
   name: string;
