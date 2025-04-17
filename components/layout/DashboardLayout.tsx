@@ -44,17 +44,17 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   function pageName() {
     switch (true) {
       case isHomePage:
-        return "Home";
+        return "";
       case isAboutMePage:
-        return "About Me";
+        return "👶 About Me";
       case isExperiencePage:
-        return "Experience";
+        return "💼 Experience";
       case isContactPage:
         return "Contact";
       case isEducationPage:
-        return "Education";
+        return "🎓 Education";
       case isSkillsPage:
-        return "Skills";
+        return "👨‍💻🌐 Skills And Language";
     }
   }
 
@@ -65,7 +65,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="flex flex-1 items-center justify-between">
           <Sidebar navigation={navigation} />
           <div className="flex-1 flex justify-center">
-            <h1 className="text-lg font-semibold text-foreground">
+            <h1 className="text-lg font-figtreeBold text-foreground">
               {pageName()}
             </h1>
           </div>
@@ -80,21 +80,21 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
 
         <div className="flex flex-col flex-1 overflow-hidden">
-          <main className="flex-1 relative overflow-y-auto focus:outline-none bg-app-background">
+          <main className="flex-1 relative overflow-y-auto scroll-container focus:outline-none bg-app-background">
             <div className="py-6">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                <h1 className="text-2xl font-semibold text-foreground hidden md:block">
+              <div className="mx-auto px-4 sm:px-6 md:px-8">
+                <h1 className="text-3xl font-figtreeBold text-app-primarytext hidden md:block">
                   {pageName()}
                 </h1>
               </div>
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+              <div className="mx-auto px-4 sm:px-6 md:px-8">
                 <div className="py-4">{children}</div>
               </div>
             </div>
           </main>
         </div>
       </div>
-      {isHomePage && <FloatingWidget />}
+      {!isContactPage && <FloatingWidget />}
     </div>
   );
 }

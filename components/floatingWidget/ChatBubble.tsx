@@ -15,7 +15,7 @@ export default function ChatBubble({ content, createdAt }: ChatBubbleProp) {
   return (
     <div>
       <p className="text-sm">{content}</p>
-      <p className="text-right text-xs text-chatColors-manatee">
+      <p className="text-right text-xs text-app-primarytext">
         {getTime(createdAt.toString())}
       </p>
     </div>

@@ -4,7 +4,7 @@ import { Textarea } from "../ui/textarea";
 import { useEffect, useRef, useState } from "react";
 import { createMessage, getMessages } from "@/app/actions/message";
 import { sendQuestion } from "@/app/utils/client/openAI";
-import PetraMessageWidget from "@/components/floatingWidget/PetraMessageWidget";
+import PetraMessageWidget from "@/components/floatingWidget/DonnMessageWidget";
 import ChatBubble from "@/components/floatingWidget/ChatBubble";
 import UserMessageWidget from "@/components/floatingWidget/UserMessageWidget";
 import { createConversation } from "@/app/actions/conversation";
@@ -36,7 +36,7 @@ export default function PopoverContentWidget({
     {
       role: "assistant",
       content:
-        "Hello! my name is Donn Williams. Please provide your preferred language",
+        "Hello! my name is Donn Williams. Get to know me by asking a question",
       createdAt: new Date(),
     },
   ]);
@@ -121,7 +121,7 @@ export default function PopoverContentWidget({
     conversationId: string
   ) {
     updateChatHistory(role, message);
-    
+
     const result = await createMessage({
       content: message,
       role: role,

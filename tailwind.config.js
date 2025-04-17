@@ -85,7 +85,8 @@ module.exports = {
 			fontFamily: {
 				figtreeBold: ["Figtree-Bold"],
 				figtreeSemiBold: ["Figtree-SemiBold"],
-				IBM: ["IBM"]
+				IBM: ["IBM"],
+				IBMSemiBold: ["IBMSemiBold"]
 			},
     		borderRadius: {
     			lg: 'var(--radius)',

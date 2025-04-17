@@ -1,9 +1,10 @@
 import DashboardLayout from "@/components/layout/DashboardLayout";
+import EducationContent from "@/components/education/EducationContent";
 
-export default function EducationPage() { 
+export default function EducationPage() {
   return (
     <DashboardLayout>
-      <div></div>
+      <EducationContent />
     </DashboardLayout>
-  )
+  );
 }

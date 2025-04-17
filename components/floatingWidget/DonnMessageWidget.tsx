@@ -11,10 +11,10 @@ export default function PetraMessageWidget({
     <div className="flex flex-row gap-2 mb-4">
       <DonnAvatar />
       <div className={"flex flex-col gap-1 max-w-[70%]"}>
-        <h4 className="font-figtreeSemiBold leading-none">Donn</h4>
+        <h4 className="font-figtreeSemiBold text-app-primarytext leading-none">Donn</h4>
         <div
           className={cn(
-            "font-IBM text-white p-2 inline-block rounded-lg bg-chatColors-cinder break-words",
+            "font-IBM text-app-buttonText p-2 inline-block rounded-lg bg-app-primarycolour break-words",
             className
           )}
         >

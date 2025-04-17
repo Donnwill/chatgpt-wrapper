@@ -22,7 +22,7 @@ export default function FloatingWidget() {
   const { conversationState, conversationDispatch } = useConversations();
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [isPetraOpen, setIsPetraOpen] = useState(false);
+  const [isDonnOpen, setIsPetraOpen] = useState(true);
   const [newConversationName, setNewConversationName] = useState("");
   const [error, setError] = useState("");
 
@@ -106,7 +106,9 @@ export default function FloatingWidget() {
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
-            <Label className="font-figtreeSemiBold">Conversation Name</Label>
+            <Label className="font-figtreeSemiBold text-app-primarytext">
+              Conversation Name
+            </Label>
             <div className="w-[75%]">
               <Input
                 onChange={onHandleChange}
@@ -130,29 +132,32 @@ export default function FloatingWidget() {
         </DialogContent>
       </Dialog>
       {/* Conversation popover */}
-      <Popover open={isPetraOpen}>
+      <Popover open={isDonnOpen}>
         <PopoverTrigger
-          onClick={() => setIsPetraOpen(!isPetraOpen)}
+          onClick={() => setIsPetraOpen(!isDonnOpen)}
           className="fixed bottom-10 right-10"
         >
-          <DonnAvatar className="w-12 h-12 shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl" />
+          <DonnAvatar
+            showIcon
+            className="w-12 h-12 shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl"
+          />
         </PopoverTrigger>
         <PopoverContent className="w-[25rem] h-[33rem] m-2 mr-6 p-0">
           <div className="flex flex-row h-[4rem] pl-4 items-center gap-2">
             <DonnAvatar className="w-12 h-12 shadow-lg" />
             <div className="flex flex-col justify-center">
-              <h4 className="font-figtreeBold text-lg leading-none">
+              <h4 className="font-figtreeBold text-lg leading-none text-app-primarytext">
                 Donn Williams
               </h4>
-              <span className="text-sm font-IBM text-muted-foreground text-chatColors-manatee">
-                Have a question? ask away!
+              <span className="text-sm font-IBM text-app-secondarytext">
+                Want to get to know me? ask away!
               </span>
             </div>
             <TooltipWidget tooltip="Create New Conversation">
               <Button
                 onClick={() => setIsDialogOpen(true)}
                 size={"icon"}
-                className="ml-auto w-8 h-8 bg-chatColors-cinder"
+                className="ml-auto w-8 h-8"
               >
                 <Plus />
               </Button>
@@ -161,7 +166,7 @@ export default function FloatingWidget() {
               <Button
                 onClick={() => setIsPetraOpen(false)}
                 size={"icon"}
-                className="mr-2 w-8 h-8 bg-chatColors-cinder"
+                className="mr-2 w-8 h-8"
               >
                 <X />
               </Button>

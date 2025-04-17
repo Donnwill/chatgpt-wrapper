@@ -2,12 +2,19 @@
 
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Download, Github, Linkedin, LucideIcon, Menu } from "lucide-react";
-import { MouseEventHandler, useState } from "react";
+import {
+  Download,
+  Github,
+  Linkedin,
+  LucideIcon,
+  Mail,
+  Menu,
+  PhoneCall,
+} from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -15,7 +22,6 @@ import {
 } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import DonnAvatar from "../floatingWidget/DonnAvatar";
-import TooltipWidget from "../tooltipWidget/TooltipWidget";
 import ExternalNavButton from "../floatingWidget/externalNavButton/ExternalNavButton";
 
 interface NavigationItem {
@@ -91,10 +97,25 @@ export default function Sidebar({ navigation }: SidebarProps) {
             tooltip="GitHub"
           />
           <ExternalNavButton
-            Icon={Download}
-            onClick={() => window.open("https://github.com/Donnwill", "_blank")}
-            tooltip="Download Resume"
+            Icon={PhoneCall}
+            onClick={() => (window.location.href = "tel:+4915510191300")}
+            tooltip="Phone"
           />
+          <ExternalNavButton
+            Icon={Mail}
+            onClick={() => (window.location.href = "mailto:donn2610@gmail.com")}
+            tooltip="Email"
+          />
+          <a
+            href="/resume/Donn_Williams_Resume.pdf"
+            download="Donn_Williams.pdf"
+          >
+            <ExternalNavButton
+              Icon={Download}
+              onClick={() => {}}
+              tooltip="Download Resume"
+            />
+          </a>
         </div>
       </div>
     );
@@ -125,10 +146,9 @@ export default function Sidebar({ navigation }: SidebarProps) {
       {/* Desktop sidebar */}
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
-          <div className="flex flex-col h-0 flex-1 bg-app-sidebar border border-[#E0DDD7]">
+          <div className="flex flex-col h-0 flex-1 bg-app-sidebar">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
               {ProfileInfo()}
-
               <NavigationLinks />
             </div>
           </div>

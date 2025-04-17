@@ -144,6 +144,11 @@
   src: url("./assets/fonts/IBMPlexSans-Regular.ttf");
 }
 
+@font-face {
+  font-family: "IBMSemiBold";
+  src: url("./assets/fonts/IBMPlexSans-SemiBold.ttf");
+}
+
 .scroll-container {}
 
 .scroll-container::-webkit-scrollbar {
