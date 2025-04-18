@@ -5,6 +5,7 @@ import { ConversationProvider } from "@/context/conversationContext";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Analytics } from "@vercel/analytics/react";
 import { ChatbotProvider } from "@/context/chatbotContext";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
     <ConversationProvider>
       <ChatbotProvider>
         <Analytics />
+        <SpeedInsights />
         <TooltipProvider>
           <html lang="en">
             <body className={inter.className}>{children}</body>

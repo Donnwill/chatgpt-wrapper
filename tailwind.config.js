@@ -16,31 +16,31 @@ module.exports = {
     		}
     	},
     	extend: {
-			colors: {
-				chatColors: {
-					zircon: "var(--chat-color-100)",
-					linkWater: "var(--chat-color-200)",
-					manatee: "var(--chat-color-400)",
-					cinder: "var(--chat-color-600)",
-					gunmetal: "var(--chat-color-800)"
-				},
-				app: {
-					background: "var(--app-background)",
-					sidebar: "var(--app-sidebar)",
-					sidebarButton: "var(--app-sidebar-button)",
-					sidebarHover: "var(--app-sidebar-hover)",
-					sidebarActive: "var(--app-sidebar-active)",
-					primarytext: "var(--app-primarytext)",
-					secondarytext: "var(--app-secondarytext)",
-					primarycolour: "var(--app-primarycolour)",
-					primaryhover: "var(--app-primaryhover)",
-					primaryactive: "var(--app-primaryactive)",
-					border: "var(--app-border)",
-					buttonDisabled: "var(--button-disabled)",
-					buttonDisabledText: "var(--button-disabled-text)",
-					buttonText: "var(--button-text)",
-					cardShadow: "var(--card-shadow)",
-				},
+    		colors: {
+    			chatColors: {
+    				zircon: 'var(--chat-color-100)',
+    				linkWater: 'var(--chat-color-200)',
+    				manatee: 'var(--chat-color-400)',
+    				cinder: 'var(--chat-color-600)',
+    				gunmetal: 'var(--chat-color-800)'
+    			},
+    			app: {
+    				background: 'var(--app-background)',
+    				sidebar: 'var(--app-sidebar)',
+    				sidebarButton: 'var(--app-sidebar-button)',
+    				sidebarHover: 'var(--app-sidebar-hover)',
+    				sidebarActive: 'var(--app-sidebar-active)',
+    				primarytext: 'var(--app-primarytext)',
+    				secondarytext: 'var(--app-secondarytext)',
+    				primarycolour: 'var(--app-primarycolour)',
+    				primaryhover: 'var(--app-primaryhover)',
+    				primaryactive: 'var(--app-primaryactive)',
+    				border: 'var(--app-border)',
+    				buttonDisabled: 'var(--button-disabled)',
+    				buttonDisabledText: 'var(--button-disabled-text)',
+    				buttonText: 'var(--button-text)',
+    				cardShadow: 'var(--card-shadow)'
+    			},
     			border: 'hsl(var(--border))',
     			input: 'hsl(var(--input))',
     			ring: 'hsl(var(--ring))',
@@ -81,13 +81,21 @@ module.exports = {
     				'4': 'hsl(var(--chart-4))',
     				'5': 'hsl(var(--chart-5))'
     			}
-			},
-			fontFamily: {
-				figtreeBold: ["Figtree-Bold"],
-				figtreeSemiBold: ["Figtree-SemiBold"],
-				IBM: ["IBM"],
-				IBMSemiBold: ["IBMSemiBold"]
-			},
+    		},
+    		fontFamily: {
+    			figtreeBold: [
+    				'Figtree-Bold'
+    			],
+    			figtreeSemiBold: [
+    				'Figtree-SemiBold'
+    			],
+    			IBM: [
+    				'IBM'
+    			],
+    			IBMSemiBold: [
+    				'IBMSemiBold'
+    			]
+    		},
     		borderRadius: {
     			lg: 'var(--radius)',
     			md: 'calc(var(--radius) - 2px)',
@@ -96,7 +104,7 @@ module.exports = {
     		keyframes: {
     			'accordion-down': {
     				from: {
-    					height: 0
+    					height: '0'
     				},
     				to: {
     					height: 'var(--radix-accordion-content-height)'
@@ -107,7 +115,7 @@ module.exports = {
     					height: 'var(--radix-accordion-content-height)'
     				},
     				to: {
-    					height: 0
+    					height: '0'
     				}
     			}
     		},
