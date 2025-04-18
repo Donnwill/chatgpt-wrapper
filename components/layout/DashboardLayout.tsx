@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 import {
   CircleUser,
@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import FloatingWidget from "../floatingWidget/FloatingWidget";
 import { usePathname } from "next/navigation";
+import { Switch } from "../ui/switch";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -34,6 +35,8 @@ const navigation = [
 ];
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
   const pathname = usePathname();
 
   const isHomePage = pathname === "/";
@@ -43,6 +46,18 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const isEducationPage = pathname === "/education";
   const isSkillsPage = pathname === "/skills";
   const isProjectsPage = pathname === "/projects";
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      setDarkTheme();
+      setIsDarkTheme(true);
+    } else {
+      setLightTheme();
+      setIsDarkTheme(false);
+    }
+  }, []);
 
   function pageName() {
     switch (true) {
@@ -63,6 +78,27 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       default:
         return "";
     }
+  }
+
+  function setTheme(isDarkTheme: boolean) {
+    const theme = isDarkTheme ? "dark" : "light";
+    if (theme === "dark") {
+      setDarkTheme();
+    } else {
+      setLightTheme();
+    }
+    localStorage.setItem("theme", theme);
+    setIsDarkTheme(isDarkTheme);
+  }
+
+  function setDarkTheme() {
+    document.documentElement.classList.add("dark");
+    document.documentElement.classList.remove("light");
+  }
+
+  function setLightTheme() {
+    document.documentElement.classList.add("light");
+    document.documentElement.classList.remove("dark");
   }
 
   return (
@@ -88,6 +124,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
         <div className="flex flex-col flex-1 overflow-hidden">
           <main className="flex-1 relative overflow-y-auto scroll-container focus:outline-none bg-app-background">
+            <Switch
+              className="absolute right-4 top-4"
+              checked={isDarkTheme}
+              onCheckedChange={setTheme}
+            />
             <div className="py-6">
               <div className="mx-auto px-4 sm:px-6 md:px-8">
                 <h1 className="text-3xl font-figtreeBold text-app-primarytext hidden md:block">

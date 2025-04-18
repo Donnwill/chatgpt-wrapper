@@ -24,11 +24,13 @@ export default function RootLayout({
     //Created ConversationProvider to preserve the chat conversation even when the users navigates to a different page and comes back
     <ConversationProvider>
       <ChatbotProvider>
-        <Analytics />
-        <SpeedInsights />
         <TooltipProvider>
           <html lang="en">
-            <body className={inter.className}>{children}</body>
+            <body className={inter.className}>
+              {children}
+              <SpeedInsights />
+              <Analytics />
+            </body>
           </html>
         </TooltipProvider>
       </ChatbotProvider>
