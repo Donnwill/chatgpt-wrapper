@@ -1,4 +1,4 @@
-import { SYSTEM_PROMPT } from "@/app/config/systemPrompt";
+import { SYSTEM_PROMPT } from "@/config/systemPrompt";
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 

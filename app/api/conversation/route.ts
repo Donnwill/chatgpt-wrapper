@@ -1,4 +1,4 @@
-import { SYSTEM_PROMPT } from "@/app/config/systemPrompt";
+import { SYSTEM_PROMPT } from "@/config/systemPrompt";
 import { prisma } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
