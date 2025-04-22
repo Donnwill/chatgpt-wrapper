@@ -1,10 +1,10 @@
 import DashboardLayout from "@/components/layout/DashboardLayout";
+import ProjectContent from "@/components/projects/ProjectsContent";
 
-export default function ProjectsPage() { 
+export default function ProjectsPage() {
   return (
     <DashboardLayout>
-      <div className="font-bold">Have worked on multiple projects. This is also a project on OpenAI, that connects to supabase database</div>
-      <div className="font-bold">All projects will be available soon</div>
+      <ProjectContent />
     </DashboardLayout>
   );
 }
