@@ -17,7 +17,7 @@ type ProjectModel = {
   projectTitle: string;
   projectDescription: string;
   images: string[];
-  url: string
+  url: string;
 };
 
 const projectsList: ProjectModel[] = [
@@ -31,7 +31,7 @@ const projectsList: ProjectModel[] = [
       "/assets/image/portfolio/portfolio-aboutme-light.png",
       "/assets/image/portfolio/portfolio-experience-dark.png",
     ],
-    url: "https://github.com/Donnwill/chatgpt-wrapper"
+    url: "https://github.com/Donnwill/chatgpt-wrapper",
   },
   {
     projectTitle: "Charging Stations Simulations",
@@ -44,13 +44,13 @@ const projectsList: ProjectModel[] = [
       "/assets/image/charging-station/advanced-responsive.png",
       "/assets/image/charging-station/advanced-responsive-sm.png",
     ],
-    url: "https://github.com/Donnwill/charging-stations"
+    url: "https://github.com/Donnwill/charging-stations",
   },
   {
     projectTitle: "Chat Application",
     projectDescription: `Just a simple Personal chat application. Uses Flutter and Dart framework`,
     images: [""],
-    url: "https://github.com/Donnwill/MyChat"
+    url: "https://github.com/Donnwill/MyChat",
   },
 ];
 
@@ -58,29 +58,24 @@ export default function ProjectContent({}: ProjectContentProps) {
   return (
     <div className="grid grid-cols-2 gap-4 max-w-4xl">
       {projectsList.map((project, index) => (
-        <Card
-          key={index}
-          className="w-[350px] h-[280px] p-0.5 hover:shadow-lg transition-shadow duration-300 shadow-app-cardShadow"
-        >
-          <button
-            onClick={() => window.open(project.url, "_blank")}
-            className="w-full h-full text-left"
-          >
-            <CardHeader className="m-1">
-              <ProjectsImageCarousel imageList={project.images} />
-            </CardHeader>
-            <CardFooter className="flex flex-col items-start gap-2 px-4 pb-4">
-              <CardTitle>{project.projectTitle}</CardTitle>
-              <TooltipWidget
-                duration={4000}
-                tooltip={project.projectDescription}
-              >
-                <CardDescription className="line-clamp-2 text-sm text-muted-foreground">
-                  {project.projectDescription}
-                </CardDescription>
-              </TooltipWidget>
-            </CardFooter>
-          </button>
+        <Card key={index} className="w-[400px] h-[330px] p-0.5">
+          <CardHeader className="m-1">
+            <ProjectsImageCarousel imageList={project.images} />
+          </CardHeader>
+          <CardFooter className="flex flex-col items-start gap-2 px-4 pb-4">
+            <CardTitle>{project.projectTitle}</CardTitle>
+            <TooltipWidget duration={4000} tooltip={project.projectDescription}>
+              <CardDescription className="line-clamp-2 text-sm text-muted-foreground">
+                {project.projectDescription}
+              </CardDescription>
+            </TooltipWidget>
+            <Button
+              className="self-end transform transition-transform hover:scale-110 hover:shadow-lg hover:shadow-app-cardShadow"
+              onClick={() => window.open(project.url, "_blank")}
+            >
+              View
+            </Button>
+          </CardFooter>
         </Card>
       ))}
     </div>

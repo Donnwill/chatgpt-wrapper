@@ -14,7 +14,7 @@ export default function ProjectsImageCarousel({
   imageList,
 }: ProjectsImageCarouselProps) {
   return (
-    <Carousel onClick={(e) => e.stopPropagation()}>
+    <Carousel>
       <CarouselContent>
         {imageList.map((image, index) => (
           <CarouselItem key={index}>
@@ -22,7 +22,7 @@ export default function ProjectsImageCarousel({
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious onClick={(e) => e.stopPropagation()}/>
+      <CarouselPrevious />
       <CarouselNext />
     </Carousel>
   );

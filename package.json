@@ -35,6 +35,7 @@
     "recharts": "^2.12.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
+    "yet-another-react-lightbox": "^3.23.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
