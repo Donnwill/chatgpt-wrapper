@@ -16,7 +16,7 @@ type ProjectContentProps = React.HTMLAttributes<HTMLDivElement>;
 type ProjectModel = {
   projectTitle: string;
   projectDescription: string;
-  images: string[];
+  images: { src: string }[];
   url: string;
 };
 
@@ -26,10 +26,10 @@ const projectsList: ProjectModel[] = [
     projectDescription: `A portfolio web application that uses ChatGPT Wrapper. Uses NextJs, Typescript, Prisma, OpenAI and Supabase a 
       PostgreSQL`,
     images: [
-      "/assets/image/portfolio/portfolio-home-light.png",
-      "/assets/image/portfolio/portfolio-home-dark.png",
-      "/assets/image/portfolio/portfolio-aboutme-light.png",
-      "/assets/image/portfolio/portfolio-experience-dark.png",
+      { src: "/assets/image/portfolio/portfolio-home-light.png" },
+      { src: "/assets/image/portfolio/portfolio-home-dark.png" },
+      { src: "/assets/image/portfolio/portfolio-aboutme-light.png" },
+      { src: "/assets/image/portfolio/portfolio-experience-dark.png" },
     ],
     url: "https://github.com/Donnwill/chatgpt-wrapper",
   },
@@ -39,26 +39,26 @@ const projectsList: ProjectModel[] = [
     Calculating how high the total energy consumption (kWh) is, when peak power loads (kW) occur, and how these
     figures change with the number of chargepoints installed. Uses React, Typescript and tailwind css.`,
     images: [
-      "/assets/image/charging-station/basic-day.png",
-      "/assets/image/charging-station/advanced-year.png",
-      "/assets/image/charging-station/advanced-responsive.png",
-      "/assets/image/charging-station/advanced-responsive-sm.png",
+      { src: "/assets/image/charging-station/basic-day.png" },
+      { src: "/assets/image/charging-station/advanced-year.png" },
+      { src: "/assets/image/charging-station/advanced-responsive.png" },
+      { src: "/assets/image/charging-station/advanced-responsive-sm.png" },
     ],
     url: "https://github.com/Donnwill/charging-stations",
   },
   {
     projectTitle: "Chat Application",
     projectDescription: `Just a simple Personal chat application. Uses Flutter and Dart framework`,
-    images: [""],
+    images: [{ src: "none" }],
     url: "https://github.com/Donnwill/MyChat",
   },
 ];
 
 export default function ProjectContent({}: ProjectContentProps) {
   return (
-    <div className="grid grid-cols-2 gap-4 max-w-4xl">
+    <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4 max-w-6xl">
       {projectsList.map((project, index) => (
-        <Card key={index} className="w-[400px] h-[330px] p-0.5">
+        <Card key={index} className="w-[360px] h-[345px] p-0.5">
           <CardHeader className="m-1">
             <ProjectsImageCarousel imageList={project.images} />
           </CardHeader>
@@ -73,7 +73,7 @@ export default function ProjectContent({}: ProjectContentProps) {
               className="self-end transform transition-transform hover:scale-110 hover:shadow-lg hover:shadow-app-cardShadow"
               onClick={() => window.open(project.url, "_blank")}
             >
-              View
+              VIEW CODE
             </Button>
           </CardFooter>
         </Card>
