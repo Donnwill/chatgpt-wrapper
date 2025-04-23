@@ -3,9 +3,14 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 type PetraAvatarProp = React.HTMLAttributes<HTMLDivElement> & {
   tooltip: string;
+  duration?: number;
 };
 
-export default function TooltipWidget({ children, tooltip }: PetraAvatarProp) {
+export default function TooltipWidget({
+  children,
+  tooltip,
+  duration = 2000,
+}: PetraAvatarProp) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [timeouts, setTimeouts] = useState<{
     showTimeout: NodeJS.Timeout | null;
@@ -24,7 +29,7 @@ export default function TooltipWidget({ children, tooltip }: PetraAvatarProp) {
     //The tooltip will show for 2000 combining the start it is 2000
     const hideTooltipTimeOut = setTimeout(() => {
       setShowTooltip(false);
-    }, 2000);
+    }, duration);
 
     setTimeouts({
       showTimeout: showTooltipTimeOut,
@@ -51,7 +56,7 @@ export default function TooltipWidget({ children, tooltip }: PetraAvatarProp) {
       >
         {children}
       </TooltipTrigger>
-      <TooltipContent className="bg-chatColors-gunmetal font-IBM text-sm">
+      <TooltipContent className="bg-chatColors-gunmetal font-IBM text-sm max-w-64">
         <p>{tooltip}</p>
       </TooltipContent>
     </Tooltip>

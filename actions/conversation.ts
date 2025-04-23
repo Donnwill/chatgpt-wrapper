@@ -1,6 +1,6 @@
 "use server";
 
-import { SYSTEM_PROMPT } from "@/app/config/systemPrompt";
+import { SYSTEM_PROMPT } from "@/config/systemPrompt";
 import { prisma } from "@/lib/db";
 
 export async function createConversation(data: { title: string }) {
