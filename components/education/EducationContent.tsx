@@ -1,6 +1,6 @@
 "use client";
 
-import { fadeInRight, fadeUp } from "@/app/utils/motionPresets";
+import { fadeInRight, fadeUp } from "@/utils/motionPresets";
 import { motion } from "framer-motion";
 import { Accordion } from "../ui/accordion";
 import AccordionWidget from "../accordionWidget/AccordionWidget";

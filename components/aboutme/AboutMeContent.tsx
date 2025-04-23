@@ -1,6 +1,6 @@
 "use client";
 
-import { fadeInRight, fadeUp } from "@/app/utils/motionPresets";
+import { fadeInRight, fadeUp } from "@/utils/motionPresets";
 import { motion } from "framer-motion";
 import StrongtagWidget from "../strongtagWidget/StrongtagWidget";
 
