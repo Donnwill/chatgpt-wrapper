@@ -49,7 +49,11 @@ const projectsList: ProjectModel[] = [
   {
     projectTitle: "Chat Application",
     projectDescription: `Just a simple Personal chat application. Uses Flutter and Dart framework`,
-    images: [{ src: "none" }],
+    images: [
+      { src: "/assets/image/my-chat/myChat-login.png" },
+      { src: "/assets/image/my-chat/myChat-friends.png" },
+      { src: "/assets/image/my-chat/myChat-requests.png" },
+    ],
     url: "https://github.com/Donnwill/MyChat",
   },
 ];
