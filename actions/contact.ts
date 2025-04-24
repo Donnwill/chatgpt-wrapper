@@ -27,7 +27,7 @@ export async function sendEmail(contactFormData: ContactFormData) {
     return {
       success: true,
       name: "Message sent successfully",
-      message: "Your message is Successfully sent!",
+      message: "Your message was sent Successfully!",
     };
   } catch (error: any) {
     return {
