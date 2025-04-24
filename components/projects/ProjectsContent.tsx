@@ -60,7 +60,7 @@ const projectsList: ProjectModel[] = [
 
 export default function ProjectContent({}: ProjectContentProps) {
   return (
-    <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4 max-w-6xl">
+    <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4 max-w-6xl mt-8">
       {projectsList.map((project, index) => (
         <Card key={index} className="w-[360px] h-[345px] p-0.5">
           <CardHeader className="m-1">

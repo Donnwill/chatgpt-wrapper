@@ -114,6 +114,10 @@ export default function PopoverContentWidget({
     }
   }
 
+  useEffect(() => {
+    textareaRef.current?.focus();
+  }, []);
+
   // Handles the message for both user and assistant. Saves to the database and updates the chat history.
   async function handleMessages(
     message: string,

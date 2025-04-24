@@ -7,7 +7,7 @@ import AccordionWidget from "../accordionWidget/AccordionWidget";
 
 export default function EducationContent() {
   return (
-    <div className="max-w-4xl text-justify">
+    <div className="max-w-4xl text-justify mt-8">
       <Accordion type="single" collapsible>
         <section className="mb-6">
           <AccordionWidget
