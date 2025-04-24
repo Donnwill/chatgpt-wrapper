@@ -1,31 +1,39 @@
 "use server";
 
+import { Resend } from "resend";
 import { ContactFormData } from "@/components/contact/contactContent";
-import nodemailer from "nodemailer";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendEmail(contactFormData: ContactFormData) {
   try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: `"${contactFormData.firstName} ${contactFormData.lastName}" ${contactFormData.email}`,
-      to: process.env.GMAIL_USER,
+    const response = await resend.emails.send({
+      from: `"${contactFormData.firstName} ${contactFormData.lastName}" <onboarding@resend.dev>`,
+      to: "donn2610@gmail.com",
       subject: contactFormData.subject,
       text: contactFormData.message,
       replyTo: contactFormData.email,
       html: `<p>${contactFormData.message}</p>`,
     });
-
-    return { message: "Success" };
+    if (response.error) {
+      return {
+        success: false,
+        name: "Message unsuccessfully",
+        message:
+          "Unfortunately your message was not sent, please try again later.",
+      };
+    }
+    console.log({ response });
+    return {
+      success: true,
+      name: "Message sent successfully",
+      message: "Your message is Successfully sent!",
+    };
   } catch (error: any) {
     return {
-      message: "Error during sending message.",
+      name: "Message unsuccessfully",
+      message:
+        "Unfortunately your message was not sent, please try again later.",
       error: error?.message || error.error,
     };
   }

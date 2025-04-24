@@ -39,15 +39,15 @@ export default function ContactContent() {
     if (Object.keys(errors).length === 0) {
       startTransition(() => {
         sendEmail(contactFormData)
-          .then(() => {
+          .then((response) => {
             const form = formRef.current;
 
             if (form) {
               form.reset();
             }
             toast({
-              title: "Message sent successfully",
-              description: "Your message is Successfully sent!",
+              title: response.name,
+              description: response.message,
             });
           })
           .catch((error) => {
