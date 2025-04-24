@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function SkillsContent() {
   return (
-    <div className="max-w-4xl text-justify">
+    <div className="max-w-4xl text-justify mt-8">
       <section className="mb-6">
         <motion.h2
           {...fadeUp}

@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Analytics } from "@vercel/analytics/react";
 import { ChatbotProvider } from "@/context/chatbotContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
               {children}
               <SpeedInsights />
               <Analytics />
+              <Toaster />
             </body>
           </html>
         </TooltipProvider>

@@ -29,6 +29,17 @@ export default function FloatingWidget() {
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      chatbotDispatch({
+        type: "SET_CHATBOT_ACTIVE",
+        payload: false,
+      });
+    }
+  }, []);
+
   function onHandleChange(event: ChangeEvent<HTMLInputElement>) {
     setNewConversationName(event.target.value);
   }
@@ -148,7 +159,10 @@ export default function FloatingWidget() {
             className="w-12 h-12 shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl"
           />
         </PopoverTrigger>
-        <PopoverContent className="w-[25rem] h-[33rem] m-2 mr-6 p-0">
+        <PopoverContent
+          onOpenAutoFocus={(e) => e.preventDefault()}
+          className="w-[25rem] h-[33rem] m-2 mr-6 p-0"
+        >
           <div className="flex flex-row h-[4rem] pl-4 items-center gap-2">
             <DonnAvatar className="w-12 h-12 shadow-lg" />
             <div className="flex flex-col justify-center">
