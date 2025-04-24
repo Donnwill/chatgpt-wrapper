@@ -11,11 +11,12 @@ import {
   Menu,
   PhoneCall,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -38,6 +39,23 @@ interface SidebarProps {
 export default function Sidebar({ navigation }: SidebarProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    let prevWidth = window.innerWidth;
+
+    function handleResize() {
+      const currWidth = window.innerWidth;
+
+      if (prevWidth < 768 && currWidth >= 768) {
+        setOpen(false);
+      }
+      prevWidth = currWidth;
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [open]);
 
   const NavigationLinks = () => (
     <nav className="mt-8 flex-1 px-2 space-y-1">
@@ -132,6 +150,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
+          <SheetDescription></SheetDescription> {/*This fixes the warning*/}
           <SheetContent side="left" className="w-[240px] sm:w-[280px] p-0 pt-4">
             <SheetHeader>
               <SheetTitle className="text-left">{ProfileInfo()}</SheetTitle>
@@ -147,7 +166,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
           <div className="flex flex-col h-0 flex-1 bg-app-sidebar">
-            <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+            <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto hide-scroll-container">
               {ProfileInfo()}
               <NavigationLinks />
             </div>
