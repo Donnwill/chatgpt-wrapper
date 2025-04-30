@@ -2,7 +2,7 @@
 
 import { fadeInRight, fadeUp } from "@/utils/motionPresets";
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 export default function HomeContent() {
   const { t } = useTranslation();
@@ -31,15 +31,13 @@ export default function HomeContent() {
           className="mt-6 max-w-2xl mx-auto text-base md:text-lg text-foreground font-IBM"
           {...fadeInRight}
         >
-          I'm a developer passionate about crafting beautiful, functional apps —
-          from mobile to desktop. I've built Android and iOS applications using
-          Flutter, Dart, and React Native. I also enjoy working on desktop apps
-          using Tauri, React, TypeScript, and Rust. I’m comfortable with setting
-          up CI/CD pipelines using Jenkins and Azure and exploring new
-          frameworks. On the backend, I’ve worked with Firebase, MongoDB,
-          Supabase and MySQL, and recently, I’ve been diving into Next.js,
-          OpenAI integrations, and Rust-based microservices. <br /> My motto:{" "}
-          <span className="italic font-bold">“Little better every day.”</span>
+          <Trans
+            i18nKey="motto"
+            components={{
+              1: <br />,
+              2: <span className="italic font-bold" />,
+            }}
+          />
         </motion.p>
       </div>
     </section>

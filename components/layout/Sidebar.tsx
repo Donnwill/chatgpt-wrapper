@@ -24,6 +24,7 @@ import {
 import { usePathname } from "next/navigation";
 import DonnAvatar from "../floatingWidget/DonnAvatar";
 import ExternalNavButton from "../externalNavButton/ExternalNavButton";
+import { useTranslation } from "react-i18next";
 
 interface NavigationItem {
   name: string;
@@ -38,6 +39,7 @@ interface SidebarProps {
 
 export default function Sidebar({ navigation }: SidebarProps) {
   const pathname = usePathname();
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -81,7 +83,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
               )}
               aria-hidden="true"
             />
-            {item.name}
+            {t(item.name)}
           </Link>
         );
       })}
@@ -96,7 +98,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
           Donn Williams
         </span>
         <span className="text-primary font-figtreeSemiBold">
-          Software Developer
+          {t("designation")}
         </span>
         <div className="flex flex-row w-full gap-4 justify-center mt-4">
           <ExternalNavButton

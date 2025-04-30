@@ -10,34 +10,40 @@ import {
   GraduationCap,
   Cpu,
   FolderKanban,
+  Bold,
 } from "lucide-react";
 import FloatingWidget from "../floatingWidget/FloatingWidget";
 import { usePathname } from "next/navigation";
 import { Switch } from "../ui/switch";
+import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group";
+import { Separator } from "../ui/separator";
+import { useTranslation } from "react-i18next";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 
 const navigation = [
-  { name: "Home", href: "/", icon: Home, current: true },
-  { name: "About Me", href: "/aboutme", icon: CircleUser, current: false },
+  { name: "home", href: "/", icon: Home, current: true },
+  { name: "aboutme", href: "/aboutme", icon: CircleUser, current: false },
   {
-    name: "Education",
+    name: "education",
     href: "/education",
     icon: GraduationCap,
     current: false,
   },
-  { name: "Experience", href: "/experience", icon: Briefcase, current: false },
-  { name: "Skills", href: "/skills", icon: Cpu, current: false },
-  { name: "Projects", href: "/projects", icon: FolderKanban, current: false },
-  { name: "Contact", href: "/contact", icon: ReceiptText, current: false },
+  { name: "experience", href: "/experience", icon: Briefcase, current: false },
+  { name: "skills", href: "/skills", icon: Cpu, current: false },
+  { name: "projects", href: "/projects", icon: FolderKanban, current: false },
+  { name: "contact", href: "/contact", icon: ReceiptText, current: false },
 ];
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
-
+  const { t, i18n } = useTranslation();
   const pathname = usePathname();
+
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [language, setLanguage] = useState("en");
 
   const isHomePage = pathname === "/";
   const isContactPage = pathname === "/contact";
@@ -59,22 +65,27 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     }
   }, []);
 
+  useEffect(() => {
+    const language = localStorage.getItem("language") ?? "en";
+    changeLanguage(language);
+  }, []);
+
   function pageName() {
     switch (true) {
       case isHomePage:
         return "";
       case isAboutMePage:
-        return "👶 About Me";
+        return `👶 ${t("aboutme")}`;
       case isExperiencePage:
-        return "💼 Experience";
+        return `💼 ${t("experience")}`;
       case isContactPage:
-        return "🧾 Contact";
+        return `🧾 ${t("contact")}`;
       case isEducationPage:
-        return "🎓 Education";
+        return `🎓 ${t("education")}`;
       case isSkillsPage:
-        return "👨‍💻🌐 Skills And Language";
+        return `👨‍💻🌐 ${t("skillsandlanguage")}`;
       case isProjectsPage:
-        return "📁 Projects";
+        return `📁 ${t("projects")}`;
       default:
         return "";
     }
@@ -99,6 +110,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   function setLightTheme() {
     document.documentElement.classList.add("light");
     document.documentElement.classList.remove("dark");
+  }
+
+  function changeLanguage(language: string) {
+    localStorage.setItem("language", language);
+    setLanguage(language);
+    i18n.changeLanguage(language);
   }
 
   return (
@@ -127,11 +144,24 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             style={{ backgroundImage: "var(--app-background)" }}
             className="flex-1 relative overflow-y-auto scroll-container focus:outline-none"
           >
-            <Switch
-              className="absolute right-4 top-4"
-              checked={isDarkTheme}
-              onCheckedChange={setTheme}
-            />
+            <div className="flex flex-row absolute right-4 top-4 items-center gap-4">
+              <ToggleGroup
+                value={language}
+                onValueChange={changeLanguage}
+                className="gap-2"
+                type="single"
+              >
+                <ToggleGroupItem size={"sm"} value="en">
+                  EN
+                </ToggleGroupItem>
+                <Separator orientation="vertical" />
+                <ToggleGroupItem size={"sm"} value="de">
+                  DE
+                </ToggleGroupItem>
+              </ToggleGroup>
+              <Switch checked={isDarkTheme} onCheckedChange={setTheme} />
+            </div>
+
             <div className="py-6">
               <div className="mx-auto px-4 sm:px-6 md:px-8">
                 <h1 className="text-3xl font-figtreeBold text-app-primarytext hidden md:block">
