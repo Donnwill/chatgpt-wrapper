@@ -48,5 +48,14 @@
   "wrapperProject": "A portfolio web application that uses ChatGPT Wrapper. Uses NextJs, Typescript, Prisma, OpenAI and Supabase a PostgreSQL.",
   "chargingStationProject": "Simulating how electric chargers are actually used for charging electric cars, Calculating how high the total energy consumption (kWh) is, when peak power loads (kW) occur, and how these figures change with the number of chargepoints installed. Uses React, Typescript and tailwind css.",
   "chatProject": "Just a simple Personal chat application. Uses Flutter and Dart framework.",
-  "viewCode": "VIEW CODE"
+  "viewCode": "VIEW CODE",
+  "firstAIMessage": "Hello! my name is Donn Williams. Get to know me by asking a question",
+  "sendMessage": "Send Message",
+  "downloadResume": "Download Resume",
+  "openAIInfo": "Want to get to know me? ask away!",
+  "createConversation": "Create Conversation",
+  "conversationLabel": "Conversation Name",
+  "conversationDialogDesc": "Start a new conversation with Donn Williams.",
+  "close": "CLOSE",
+  "create": "CREATE"
 }

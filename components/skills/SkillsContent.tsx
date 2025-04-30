@@ -48,8 +48,8 @@ export default function SkillsContent() {
           {...fadeInRight}
           className="text-lg font-IBM text-app-secondarytext md:grid grid-cols-2 gap-y-2 list-disc list-inside"
         >
-          {softwares.map((software) => (
-            <li>{software}</li>
+          {softwares.map((software, index) => (
+            <li key={index}>{software}</li>
           ))}
         </motion.ul>
       </section>
@@ -64,8 +64,8 @@ export default function SkillsContent() {
           {...fadeInRight}
           className="text-lg font-IBM text-app-secondarytext md:grid grid-cols-2 gap-y-2 list-disc list-inside"
         >
-          {skills.map((skill) => (
-            <li>{t(skill)}</li>
+          {skills.map((skill, index) => (
+            <li key={index}>{t(skill)}</li>
           ))}
         </motion.ul>
       </section>
@@ -80,8 +80,8 @@ export default function SkillsContent() {
           {...fadeInRight}
           className="text-lg font-IBM text-app-secondarytext md:grid grid-cols-2 gap-y-2 list-disc list-inside"
         >
-          {languages.map((language) => (
-            <li>{t(language)}</li>
+          {languages.map((language, index) => (
+            <li key={index}>{t(language)}</li>
           ))}
         </motion.ul>
       </section>

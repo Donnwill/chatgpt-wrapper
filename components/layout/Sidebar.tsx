@@ -133,7 +133,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
             <ExternalNavButton
               Icon={Download}
               onClick={() => {}}
-              tooltip="Download Resume"
+              tooltip={t("downloadResume")}
             />
           </a>
         </div>

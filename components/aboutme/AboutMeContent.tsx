@@ -94,8 +94,8 @@ export default function AboutMeContent() {
           {...fadeInRight}
           className="list-disc list-inside text-lg space-y-1 font-IBM text-app-secondarytext"
         >
-          {funFacts.map((funFact) => (
-            <li>{t(funFact)}</li>
+          {funFacts.map((funFact, index) => (
+            <li key={index}>{t(funFact)}</li>
           ))}
         </motion.ul>
       </section>

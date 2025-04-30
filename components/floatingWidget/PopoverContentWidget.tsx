@@ -10,6 +10,7 @@ import UserMessageWidget from "@/components/floatingWidget/UserMessageWidget";
 import { createConversation } from "@/actions/conversation";
 import { useConversations } from "@/context/conversationContext";
 import TooltipWidget from "../tooltipWidget/TooltipWidget";
+import { useTranslation } from "react-i18next";
 
 const role = ["user", "assistant", "system"] as const;
 export type Role = (typeof role)[number];
@@ -30,13 +31,13 @@ export default function PopoverContentWidget({
   conversationTitle,
 }: PopoverContentWidget) {
   const { conversationDispatch } = useConversations();
+  const { t } = useTranslation();
 
   const [message, setMessage] = useState("");
   const [chats, setChats] = useState<Chat[]>([
     {
       role: "assistant",
-      content:
-        "Hello! my name is Donn Williams. Get to know me by asking a question",
+      content: t("firstAIMessage"),
       createdAt: new Date(),
     },
   ]);
@@ -189,7 +190,7 @@ export default function PopoverContentWidget({
   }
 
   return (
-    <div className="flex flex-col justify-between h-[26rem] p-2">
+    <div className="flex flex-col justify-between sm:h-[26rem] h-[22rem] p-2">
       <div ref={scrollAreaRef} className="overflow-y-auto scroll-container">
         {chats.map((chatLog, index) =>
           chatLog.role === "assistant" ? (
@@ -226,7 +227,7 @@ export default function PopoverContentWidget({
           onChange={(event) => setMessage(event.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <TooltipWidget tooltip="Send Message">
+        <TooltipWidget tooltip={t("sendMessage")}>
           <Button
             disabled={isGeneratingResponse}
             className="col-span-1"
