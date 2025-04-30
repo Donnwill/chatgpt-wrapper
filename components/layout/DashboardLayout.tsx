@@ -123,7 +123,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         </div>
 
         <div className="flex flex-col flex-1 overflow-hidden">
-          <main className="flex-1 relative overflow-y-auto scroll-container focus:outline-none bg-app-background">
+          <main
+            style={{ backgroundImage: "var(--app-background)" }}
+            className="flex-1 relative overflow-y-auto scroll-container focus:outline-none"
+          >
             <Switch
               className="absolute right-4 top-4"
               checked={isDarkTheme}

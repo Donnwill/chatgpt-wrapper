@@ -50,7 +50,7 @@
     --chat-color-800: rgba(45, 51, 57);
 
     /*App colours*/
-    --app-background: #FAF9F6;
+    --app-background: linear-gradient(135deg, #FAF9F6 0%, #F3F1EC 50%, #EDEAE5 100%);
     --app-sidebar: #F1EFEA;
     --app-sidebar-button: #F1EFEA;
     --app-sidebar-hover: #FFECEC;
@@ -102,7 +102,7 @@
     --chart-5: 340 75% 55%;
 
     /*App colours*/
-    --app-background: #0F172A;
+    --app-background: linear-gradient(135deg, #0F172A 0%, #1F2937 50%, #0F172A 100%);
     --app-sidebar: #1E293B;
     --app-sidebar-button: #1E293B;
     --app-sidebar-hover: #334155;
