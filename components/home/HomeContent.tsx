@@ -2,8 +2,11 @@
 
 import { fadeInRight, fadeUp } from "@/utils/motionPresets";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function HomeContent() {
+  const { t } = useTranslation();
+
   return (
     <section className="flex px-6 overflow-hidden">
       {/* Content */}
@@ -21,7 +24,7 @@ export default function HomeContent() {
           className="mt-4 text-lg md:text-xl text-app-secondarytext font-figtreeSemiBold"
           {...fadeUp}
         >
-          Software Developer
+          {t("designation")}
         </motion.h2>
 
         <motion.p
