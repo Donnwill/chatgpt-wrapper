@@ -2,14 +2,14 @@ import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { MessageSquareMore } from "lucide-react";
 
-type DonnAvatarProp = React.HTMLAttributes<HTMLDivElement> & {
+type AIAvatarProp = React.HTMLAttributes<HTMLDivElement> & {
   showIcon?: boolean;
 };
 
-export default function DonnAvatar({
+export default function AIAvatar({
   className,
   showIcon = false,
-}: DonnAvatarProp) {
+}: AIAvatarProp) {
   return (
     <Avatar
       className={cn(

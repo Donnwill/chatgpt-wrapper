@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
-type PetraAvatarProp = React.HTMLAttributes<HTMLDivElement> & {
+type TooltipWidgetProp = React.HTMLAttributes<HTMLDivElement> & {
   tooltip: string;
   duration?: number;
 };
@@ -10,7 +10,7 @@ export default function TooltipWidget({
   children,
   tooltip,
   duration = 2000,
-}: PetraAvatarProp) {
+}: TooltipWidgetProp) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [timeouts, setTimeouts] = useState<{
     showTimeout: NodeJS.Timeout | null;

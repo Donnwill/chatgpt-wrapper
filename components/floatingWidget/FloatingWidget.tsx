@@ -1,6 +1,6 @@
 import { Plus, X } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import DonnAvatar from "@/components/floatingWidget/DonnAvatar";
+import AIAvatar from "@/components/floatingWidget/AIAvatar";
 import PopoverContentWidget from "@/components/floatingWidget/PopoverContentWidget";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "../ui/button";
@@ -18,8 +18,11 @@ import { Label } from "../ui/label";
 import { useConversations } from "@/context/conversationContext";
 import TooltipWidget from "../tooltipWidget/TooltipWidget";
 import { useChatbot } from "@/context/chatbotContext";
+import { useTranslation } from "react-i18next";
 
 export default function FloatingWidget() {
+  const { t } = useTranslation();
+
   const { conversationState, conversationDispatch } = useConversations();
   const { chatbotState, chatbotDispatch } = useChatbot();
 
@@ -112,14 +115,12 @@ export default function FloatingWidget() {
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Create Conversation</DialogTitle>
-            <DialogDescription>
-              Start a new conversation with Petra.
-            </DialogDescription>
+            <DialogTitle>{t("createConversation")}</DialogTitle>
+            <DialogDescription>{t("conversationDialogDesc")}</DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <Label className="font-figtreeSemiBold text-app-primarytext">
-              Conversation Name
+              {t("conversationLabel")}
             </Label>
             <div className="w-[75%]">
               <Input
@@ -135,10 +136,10 @@ export default function FloatingWidget() {
           </div>
           <DialogFooter>
             <Button variant={"outline"} onClick={onDialogClose}>
-              Close
+              {t("close")}
             </Button>
             <Button onClick={createNewConversation} type="submit">
-              Create
+              {t("create")}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -154,23 +155,23 @@ export default function FloatingWidget() {
           }
           className="fixed bottom-10 right-10"
         >
-          <DonnAvatar
+          <AIAvatar
             showIcon
             className="w-12 h-12 shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl"
           />
         </PopoverTrigger>
         <PopoverContent
           onOpenAutoFocus={(e) => e.preventDefault()}
-          className="w-[25rem] h-[33rem] m-2 mr-6 p-0"
+          className="sm:w-[25rem] sm:h-[34rem] w-[20rem] h-[30rem] m-2 mr-6 p-0"
         >
-          <div className="flex flex-row h-[4rem] pl-4 items-center gap-2">
-            <DonnAvatar className="w-12 h-12 shadow-lg" />
+          <div className="flex flex-row h-[5rem] pl-4 items-center gap-2">
+            <AIAvatar className="w-12 h-12 shadow-lg" />
             <div className="flex flex-col justify-center">
               <h4 className="font-figtreeBold text-lg leading-none text-app-primarytext">
                 Donn Williams
               </h4>
-              <span className="text-sm font-IBM text-app-secondarytext">
-                Want to get to know me? ask away!
+              <span className="text-sm font-IBM text-app-secondarytext sm:w-[14rem] w-[9rem]">
+                {t("openAIInfo")}
               </span>
             </div>
             <TooltipWidget tooltip="Create New Conversation">

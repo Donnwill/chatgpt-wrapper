@@ -22,8 +22,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
-import DonnAvatar from "../floatingWidget/DonnAvatar";
+import AIAvatar from "../floatingWidget/AIAvatar";
 import ExternalNavButton from "../externalNavButton/ExternalNavButton";
+import { useTranslation } from "react-i18next";
 
 interface NavigationItem {
   name: string;
@@ -38,6 +39,7 @@ interface SidebarProps {
 
 export default function Sidebar({ navigation }: SidebarProps) {
   const pathname = usePathname();
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -81,7 +83,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
               )}
               aria-hidden="true"
             />
-            {item.name}
+            {t(item.name)}
           </Link>
         );
       })}
@@ -91,12 +93,12 @@ export default function Sidebar({ navigation }: SidebarProps) {
   const ProfileInfo = () => {
     return (
       <div className="flex flex-col items-center flex-shrink-0 px-4">
-        <DonnAvatar className="w-32 h-32" />
+        <AIAvatar className="w-32 h-32" />
         <span className="text-primary text-xl font-figtreeBold">
           Donn Williams
         </span>
         <span className="text-primary font-figtreeSemiBold">
-          Software Developer
+          {t("designation")}
         </span>
         <div className="flex flex-row w-full gap-4 justify-center mt-4">
           <ExternalNavButton
@@ -131,7 +133,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
             <ExternalNavButton
               Icon={Download}
               onClick={() => {}}
-              tooltip="Download Resume"
+              tooltip={t("downloadResume")}
             />
           </a>
         </div>

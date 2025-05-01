@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
 import TooltipWidget from "../tooltipWidget/TooltipWidget";
 import { Button } from "../ui/button";
 import {
@@ -23,8 +24,7 @@ type ProjectModel = {
 const projectsList: ProjectModel[] = [
   {
     projectTitle: "ChatGPT Wrapper",
-    projectDescription: `A portfolio web application that uses ChatGPT Wrapper. Uses NextJs, Typescript, Prisma, OpenAI and Supabase a 
-      PostgreSQL`,
+    projectDescription: "wrapperProject",
     images: [
       { src: "/assets/image/portfolio/portfolio-home-light.png" },
       { src: "/assets/image/portfolio/portfolio-home-dark.png" },
@@ -35,9 +35,7 @@ const projectsList: ProjectModel[] = [
   },
   {
     projectTitle: "Charging Stations Simulations",
-    projectDescription: `Simulating how electric chargers are actually used for charging electric cars, 
-    Calculating how high the total energy consumption (kWh) is, when peak power loads (kW) occur, and how these
-    figures change with the number of chargepoints installed. Uses React, Typescript and tailwind css.`,
+    projectDescription: "chargingStationProject",
     images: [
       { src: "/assets/image/charging-station/basic-day.png" },
       { src: "/assets/image/charging-station/advanced-year.png" },
@@ -48,7 +46,7 @@ const projectsList: ProjectModel[] = [
   },
   {
     projectTitle: "Chat Application",
-    projectDescription: `Just a simple Personal chat application. Uses Flutter and Dart framework`,
+    projectDescription: "chatProject",
     images: [
       { src: "/assets/image/my-chat/myChat-login.png" },
       { src: "/assets/image/my-chat/myChat-friends.png" },
@@ -59,6 +57,8 @@ const projectsList: ProjectModel[] = [
 ];
 
 export default function ProjectContent({}: ProjectContentProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-4 max-w-6xl mt-8">
       {projectsList.map((project, index) => (
@@ -68,16 +68,19 @@ export default function ProjectContent({}: ProjectContentProps) {
           </CardHeader>
           <CardFooter className="flex flex-col items-start gap-2 px-4 pb-4">
             <CardTitle>{project.projectTitle}</CardTitle>
-            <TooltipWidget duration={4000} tooltip={project.projectDescription}>
+            <TooltipWidget
+              duration={4000}
+              tooltip={t(project.projectDescription)}
+            >
               <CardDescription className="line-clamp-2 text-sm text-muted-foreground">
-                {project.projectDescription}
+                {t(project.projectDescription)}
               </CardDescription>
             </TooltipWidget>
             <Button
               className="self-end transform transition-transform hover:scale-110 hover:shadow-lg hover:shadow-app-cardShadow"
               onClick={() => window.open(project.url, "_blank")}
             >
-              VIEW CODE
+              {t("viewCode")}
             </Button>
           </CardFooter>
         </Card>

@@ -6,6 +6,7 @@ import InputWidget from "./InputWidget";
 import { FormValidation } from "./FormValidation";
 import { sendEmail } from "@/actions/contact";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 export type ContactFormData = {
   firstName: string;
@@ -17,6 +18,8 @@ export type ContactFormData = {
 
 export default function ContactContent() {
   const { toast } = useToast();
+  const { t } = useTranslation();
+
   const [pending, startTransition] = useTransition();
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -72,7 +75,7 @@ export default function ContactContent() {
         <div className="flex flex-col w-full gap-4">
           <InputWidget
             error={errors["firstName"]}
-            label="First Name"
+            label={t("firstName")}
             name="firstName"
             placeholder={"John"}
           />
@@ -80,7 +83,7 @@ export default function ContactContent() {
         <div className="flex flex-col w-full gap-4">
           <InputWidget
             error={errors["lastName"]}
-            label="Last Name"
+            label={t("lastName")}
             name="lastName"
             placeholder={"Snow"}
           />
@@ -88,24 +91,24 @@ export default function ContactContent() {
       </div>
       <InputWidget
         error={errors["email"]}
-        label="Email"
+        label={t("email")}
         name="email"
         placeholder={"example@gmail.com"}
       />
       <InputWidget
         error={errors["subject"]}
-        label="Subject"
+        label={t("subject")}
         name="subject"
-        placeholder={"About your portfolio"}
+        placeholder={t("subjectPlaceHolder")}
       />
       <InputWidget
         error={errors["message"]}
-        label="Message"
+        label={t("message")}
         name="message"
-        placeholder={"I love your Portfolio."}
+        placeholder={t("messagePlaceHolder")}
       />
       <Button className="w-[20%]" disabled={pending} type="submit">
-        {pending ? "SENDING" : "SUBMIT"}
+        {pending ? t("sending") : t("submit")}
       </Button>
     </form>
   );
