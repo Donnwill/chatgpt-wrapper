@@ -171,14 +171,21 @@
   border-radius: 6px;
 }
 
+.small-scroll-container {
+}
+
+.small-scroll-container::-webkit-scrollbar {
+  width: 1px;
+}
+
+.small-scroll-container::-webkit-scrollbar-thumb {
+  background-color: rgba(209, 213, 219);
+  border-radius: 1px;
+}
+
 .hide-scroll-container {
 }
 
 .hide-scroll-container::-webkit-scrollbar {
-  width: 1px;
-}
-
-.hide-scroll-container::-webkit-scrollbar-thumb {
-  background-color: rgba(209, 213, 219);
-  border-radius: 1px;
+  width: 0px;
 }

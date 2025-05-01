@@ -231,6 +231,7 @@ export default function PopoverContentWidget({
           <Button
             disabled={isGeneratingResponse}
             className="col-span-1"
+            size={"send"}
             onClick={() => saveMessage(conversationId, message)}
           >
             <StepForward />

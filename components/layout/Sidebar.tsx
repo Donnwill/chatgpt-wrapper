@@ -168,7 +168,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
           <div className="flex flex-col h-0 flex-1 bg-app-sidebar">
-            <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto hide-scroll-container">
+            <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto small-scroll-container">
               {ProfileInfo()}
               <NavigationLinks />
             </div>

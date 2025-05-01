@@ -113,6 +113,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   }
 
   function changeLanguage(language: string) {
+    if (language === "") return;
+
     localStorage.setItem("language", language);
     setLanguage(language);
     i18n.changeLanguage(language);
