@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { ChatbotProvider } from "@/context/chatbotContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "@/components/ui/toaster";
+import I18nProvider from "@/components/i18nProvider/I18nProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,19 +24,21 @@ export default function RootLayout({
 }>) {
   return (
     //Created ConversationProvider to preserve the chat conversation even when the users navigates to a different page and comes back
-    <ConversationProvider>
-      <ChatbotProvider>
-        <TooltipProvider>
-          <html lang="en">
-            <body className={inter.className}>
-              {children}
-              <SpeedInsights />
-              <Analytics />
-              <Toaster />
-            </body>
-          </html>
-        </TooltipProvider>
-      </ChatbotProvider>
-    </ConversationProvider>
+    <I18nProvider>
+      <ConversationProvider>
+        <ChatbotProvider>
+          <TooltipProvider>
+            <html lang="de">
+              <body className={inter.className}>
+                {children}
+                <SpeedInsights />
+                <Analytics />
+                <Toaster />
+              </body>
+            </html>
+          </TooltipProvider>
+        </ChatbotProvider>
+      </ConversationProvider>
+    </I18nProvider>
   );
 }
