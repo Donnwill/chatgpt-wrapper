@@ -8,12 +8,14 @@
   "projects": "Projects",
   "contact": "Contact",
   "skillsandlanguage": "Skills And Language",
+
   "personalBackground": "Personal Background",
   "personalBackgroundContent": "I was born on <1>25th October 1994</1> in <1>Nagercoil</1>, a small yet beautiful town in <1>Kanyakumari, Tamil Nadu</1>. I completed my schooling in my hometown before pursuing my bachelor's degree, spending two years in <1>Dehradun, India</1> and the final two years in <1>Sheffield, United Kingdom</1>. After graduating, I returned to India to begin my professional journey. A couple of years later, in 2021, I moved to Germany for my master’s and I’ve been living here ever since.",
   "whoIAmProfessionally": "Who I Am Professionally",
   "whoIAmProfessionallyContent": "I'm a software developer with a strong focus on <1>clean design</1>, <1>solid architecture</1>, and <1>meaningful user experiences</1>. I enjoy building scalable systems and working with modern technologies across the stack. My favourite frameworks are <1>Flutter & Dart, React & TypeScript, and Tauri</1>.",
   "whatDrivesMe": "What Drives Me",
   "whatDrivesMeContent": "I believe in writing <1>sharp</1>, <1>clean code</1>, <1>giving honest feedback</1>. If something feels bloated or overcomplicated, I’ll likely rebuild it simpler and better. <1>What truly motivates me</1> is the drive to improve every single day. I thrive on learning something new, no matter how small. In the long run, I aim to become a well-rounded developer with <1>deep technical knowledge</1>, someone who is capable and not just building great software. One day, I want to have a team of my own, mentor, and grow with.",
+
   "funFacts": "Fun Facts",
   "funFact1": "I enjoy listening to music, mostly Japanese, English, Tamil and Korean.",
   "funFact2": "My favourite food is South Indian chicken or fish curry.",
@@ -21,6 +23,7 @@
   "funFact4": "I played cricket till I was 18, I was the captain of the team. From time to time, I also play sports, such as football, badminton.",
   "funFact5": "I take long walks at night. That’s when the best ideas hit.",
   "funFact6": "I enjoy playing video games mostly competitive, strategy, or sci-fi themes.",
+
   "software": "Software",
   "softwareDevelopment": "Software development",
   "mobileAppDevelopment": "Mobile app development",
@@ -30,11 +33,13 @@
   "buildReleases": "Build releases",
   "frontendFrameworks": "Front-end frameworks",
   "codeReviewAndRefactoring": "Code review and refactoring",
+
   "languages": "Languages",
   "german": "German",
   "english": "English",
   "tamil": "Tamil",
   "malayalam": "Malayalam",
+
   "firstName": "First Name",
   "lastName": "Last Name",
   "email": "Email",
@@ -44,6 +49,7 @@
   "messagePlaceHolder": "I love your Portfolio.",
   "submit": "SUBMIT",
   "sending": "SENDING...",
+
   "motto": "I'm a developer passionate about crafting beautiful, functional apps from mobile to desktop. I've built Android and IOS applications using Flutter, Dart, and React Native. I also enjoy working on desktop apps using Tauri, React, TypeScript, and Rust. I’m comfortable setting up CI/CD pipelines using Jenkins and Azure and exploring new frameworks. On the backend, I’ve worked with Firebase, MongoDB, Supabase and MySQL, and recently, I’ve been diving into Next.js, OpenAI integrations, and Rust-based microservices.<1/>My motto: <2>“Little better every day.”</2>",
   "wrapperProject": "A portfolio web application that uses ChatGPT Wrapper. Uses NextJs, Typescript, Prisma, OpenAI and Supabase a PostgreSQL.",
   "chargingStationProject": "Simulating how electric chargers are actually used for charging electric cars, Calculating how high the total energy consumption (kWh) is, when peak power loads (kW) occur, and how these figures change with the number of chargepoints installed. Uses React, Typescript and tailwind css.",
@@ -57,5 +63,49 @@
   "conversationLabel": "Conversation Name",
   "conversationDialogDesc": "Start a new conversation with Donn Williams.",
   "close": "CLOSE",
-  "create": "CREATE"
+  "create": "CREATE",
+
+  "education1Title": "BEng in Aerospace Engineering — Sheffield Hallam University, UK (2015–2017)",
+  "education1Desc1": "Completed the final two years of my engineering degree in the UK after an international transfer.",
+  "education1Desc2": "Achieved a Second-Class (2:2) degree while adapting to a new education system and culture.",
+  "education1Desc3": "Gained strong fundamentals in engineering, physics, and critical thinking all of which shaped how I approach software development today.",
+
+  "education2Title": "Associate Degree in Aerospace Engineering — Indian Institute of Aeronautical Engineering, India (2012–2014)",
+  "education2Desc1": "Completed the foundational two years of my engineering education in India.",
+  "education2Desc2": "Achieved a GPA of 3.6/4 with a strong focus on mathematics, mechanical systems, and problem-solving.",
+
+  "education3Title": "CS50’s Introduction to AI with Python — Harvard / EDX (2020)",
+  "education3Desc1": "Took this course during the pandemic as my entry point into programming and artificial intelligence.",
+  "education3Desc2": "Learned the fundamentals of programming, algorithms, search, machine learning, and logic in Python.",
+  "education3Desc3": "This course sparked my love for programming and set the stage for my transition into software development.",
+
+  "achievements": "Achievements:",
+  "experience1Title": "Intermediate Software Developer — Sensit! GmbH, Germany (Sep 2023 – Present)",
+  "experience1Desc1": "Developed multiple desktop applications using the <1>Tauri</1> framework, leveraging <1>Rust</1> for backend performance and <1>React with TypeScript</1> for a type-safe frontend. Standardized styling across products and white-label solutions using <1>Tailwind CSS</1>.",
+  "experience1Desc2": "Implemented asynchronous, non-blocking communication with synchronous hardware using the Tokio runtime. Collaborated closely with the design team, independently managing tasks to enhance <1>visual appeal</1> and <1>user experience</1>.",
+  "experience1Desc3": "Designed, developed, and maintained Rust-based microservices with a distributed <1>SQLite (TURSO)</1> database for internal and external services.",
+  "experience1Desc4": "Contributed to the development and optimization of complex CI/CD pipelines in <1>Azure</1>, ensuring code quality through <1>rigorous testing, linting, building and releasing</1> across a multi-product <1>mono repo</1>.",
+  "experience1Desc5": "Led internal projects, driving team efficiency and ensuring project success.",
+  "experience1Achievement1": "Recognized for outstanding performance with an <1>award of company shares and bonuses</1>, reflecting my contributions to key projects and overall company success.",
+
+  "experience2Title": "Junior Software Developer — Sensit! GmbH, Germany (Aug 2021 – Aug 2023)",
+  "experience2Desc1": "Developed the Feelbelt mobile application using <1>Flutter</1> and <1>Dart</1>.",
+  "experience2Desc2": "Experienced with <1>MongoDB</1> and <1>Firebase</1>.",
+  "experience2Desc3": "Implemented <1>unit tests</1> and <1>integration tests</1>, following <1>clean code</1> principles for maintainability and usability.",
+  "experience2Desc4": "Integrated Bluetooth connectivity to read and write firmware values.",
+  "experience2Desc5": "Added new features, including firmware update progress tracking and an in-app video player.",
+  "experience2Desc6": "Conducted thorough application testing before final release to ensure issue resolution.",
+  "experience2Desc7": "Gained proficiency in desktop application development with <1>UWP (C#), JavaFX (Java), ElectronJS (JavaScript), Tauri (React, TypeScript), and Compose Multiplatform</1>.",
+  "experience2Achievement1": "Offered pay rise and new position within the company.",
+
+  "experience3Title": "Software Developer — Asirtech, India (Oct 2020 – Apr 2021)",
+  "experience3Desc1": "Contributed to the development of a web application using <1>Java</1>, <1>Spring Boot</1>, <1>AngularJS</1>, and <1>HTML</1>, focusing on both frontend and backend development.",
+  "experience3Desc2": "Developed a mobile application for an automated testing tool <1>(ACRA)</1>, implementing UI and core functionalities using <1>Dart</1> and <1>Flutter</1>.",
+  "experience3Achievement1": "Developed complete front-end mobile application functionalities in 3 months.",
+  "experience3Achievement2": "After probation received pay rise of 110%.",
+
+  "experience4Title": "Design Engineer — Ozone Engineering Solutions, India (Feb 2018 – Jul 2019)",
+  "experience4Desc1": "Designed innovative 2D and 3D machine guards tailored to customer requirements.",
+  "experience4Desc2": "<1>Collaborated with customers</1> to identify issues and provide creative solutions.",
+  "experience4Achievement1": "Produced range of 3D and 2D drawings on machine guards that led company to secure project worth 700K INR."
 }

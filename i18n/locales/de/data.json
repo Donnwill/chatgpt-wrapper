@@ -8,12 +8,14 @@
   "projects": "Projekte",
   "contact": "Kontakt",
   "skillsandlanguage": "Fähigkeiten und Sprachen",
+
   "personalBackground": "Persönlicher Hintergrund",
   "personalBackgroundContent": "Ich wurde am <1>25. Oktober 1994</1> in <1>Nagercoil</1> geboren, einer kleinen, aber wunderschönen Stadt in <1>Kanyakumari, Tamil Nadu</1>. Ich absolvierte meine Schulzeit in meiner Heimatstadt, bevor ich mein Bachelorstudium begann zwei Jahre in <1>Dehradun, Indien</1> und die letzten zwei Jahre in <1>Sheffield, Vereinigtes Königreich</1>. Nach meinem Abschluss kehrte ich nach Indien zurück, um meine berufliche Laufbahn zu beginnen. Ein paar Jahre später, im Jahr 2021, zog ich für meinen Master nach Deutschland und lebe seither hier.",
   "whoIAmProfessionally": "Mein berufliches Ich",
   "whoIAmProfessionallyContent": "Ich bin Softwareentwickler mit einem Fokus auf <1>sauberes Design</1>, <1>solide Architektur</1> und <1>bedeutsame Nutzererlebnisse</1>. Ich entwickle gerne skalierbare Systeme und arbeite mit modernen Technologien im gesamten Stack. Meine Lieblings-Frameworks sind <1>Flutter & Dart, React & TypeScript und Tauri</1>.",
   "whatDrivesMe": "Was mich antreibt",
   "whatDrivesMeContent": "Ich glaube daran, <1>scharfen</1>, <1>sauberen Code</1> zu schreiben, <1>ehrliches Feedback zu geben</1>. Wenn etwas aufgebläht oder zu kompliziert wirkt, werde ich es wahrscheinlich einfacher und besser neu aufbauen. <1>Was mich wirklich motiviert</1>, ist der Drang, mich jeden Tag zu verbessern. Ich gedeihe darin, etwas Neues zu lernen, egal wie klein. Langfristig möchte ich ein vielseitiger Entwickler mit <1>tiefem technischem Wissen</1> werden, jemand, der fähig ist und nicht nur großartige Software entwickelt. Eines Tages möchte ich ein eigenes Team haben, mentoren und mit ihnen wachsen.",
+
   "funFacts": "Fun Facts",
   "funFact1": "Ich höre gerne Musik, meistens auf Japanisch, Englisch, Tamil und Koreanisch.",
   "funFact2": "Mein Lieblingsessen ist Südindisches Hühnchen oder Fischcurry.",
@@ -21,6 +23,7 @@
   "funFact4": "Ich habe bis zu meinem 18. Lebensjahr Cricket gespielt und war der Kapitän des Teams. Von Zeit zu Zeit spiele ich auch andere Sportarten wie Fußball und Badminton.",
   "funFact5": "Ich mache lange Spaziergänge in der Nacht. Zu dieser Zeit kommen mir die besten Ideen.",
   "funFact6": "Ich spiele gerne Videospiele meistens wettbewerbsorientiert, strategisch oder mit Science-Fiction-Themen.",
+
   "software": "Software",
   "softwareDevelopment": "Softwareentwicklung",
   "mobileAppDevelopment": "Entwicklung mobiler Anwendungen",
@@ -30,11 +33,13 @@
   "buildReleases": "Build Releases",
   "frontendFrameworks": "Frontend Frameworks",
   "codeReviewAndRefactoring": "Code-Review und Refaktorisierung",
+
   "languages": "Sprachen",
   "german": "Deutsch",
   "english": "Englisch",
   "tamil": "Tamil",
   "malayalam": "Malayalam",
+
   "firstName": "Vorname",
   "lastName": "Nachname",
   "email": "E-Mail",
@@ -44,6 +49,7 @@
   "messagePlaceHolder": "Ich liebe dein Portfolio.",
   "submit": "ABSENDEN",
   "sending": "WIRD GESENDET...",
+
   "motto": "Ich bin ein Entwickler mit einer Leidenschaft dafür, schöne und funktionale Apps zu erstellen von Mobile bis Desktop. Ich habe Android- und IOS-Anwendungen mit Flutter, Dart und React Native entwickelt. Außerdem arbeite ich gerne an Desktop-Apps mit Tauri, React, TypeScript und Rust. Ich fühle mich wohl beim Einrichten von CI/CD-Pipelines mit Jenkins und Azure und erkunde gerne neue Frameworks. Im Backend habe ich mit Firebase, MongoDB, Supabase und MySQL gearbeitet und beschäftige mich derzeit intensiv mit Next.js, OpenAI-Integrationen und Microservices auf Basis von Rust.<1/>Mein Motto: <2>“Jeden Tag ein bisschen besser.”</2>",
   "wrapperProject": "Eine Portfolio-Webanwendung, die ChatGPT Wrapper verwendet. Nutzt Next.js, TypeScript, Prisma, OpenAI und Supabase mit PostgreSQL.",
   "chargingStationProject": "Simulation der tatsächlichen Nutzung von Ladestationen für Elektroautos. Berechnung des gesamten Energieverbrauchs (kWh), der Spitzenlasten (kW) und wie sich diese Werte mit der Anzahl installierter Ladestationen verändern. Verwendet React, TypeScript und Tailwind CSS.",
@@ -57,5 +63,49 @@
   "conversationLabel": "Name der Konversation",
   "conversationDialogDesc": "Starte eine neue Konversation mit Donn Williams.",
   "close": "SCHLIESSEN",
-  "create": "ERSTELLEN"
+  "create": "ERSTELLEN",
+
+  "education1Title": "BEng in Luft und Raumfahrttechnik — Sheffield Hallam University, Großbritannien (2015–2017)",
+  "education1Desc1": "Die letzten zwei Jahre meines Ingenieurstudiums nach einem internationalen Wechsel im Vereinigten Königreich abgeschlossen.",
+  "education1Desc2": "Einen Second-Class (2:2) Abschluss erreicht und mich erfolgreich an ein neues Bildungssystem und eine neue Kultur angepasst.",
+  "education1Desc3": "Starke Grundlagen in Technik, Physik und kritischem Denken erworben – alles Fähigkeiten, die meinen Ansatz in der Softwareentwicklung geprägt haben.",
+
+  "education2Title": "Associate Degree in Luft und Raumfahrttechnik — Indian Institute of Aeronautical Engineering, Indien (2012–2014)",
+  "education2Desc1": "Die grundlegenden zwei Jahre meines Ingenieurstudiums in Indien abgeschlossen.",
+  "education2Desc2": "Einen GPA von 3,6/4 erreicht mit starkem Fokus auf Mathematik, mechanische Systeme und Problemlösung.",
+
+  "education3Title": "CS50’s Einführung in AI mit Python — Harvard / EDX (2020)",
+  "education3Desc1": "Während der Pandemie als Einstieg in Programmierung und Künstliche Intelligenz absolviert.",
+  "education3Desc2": "Grundlagen von Programmierung, Algorithmen, Suche, maschinellem Lernen und Logik in Python gelernt.",
+  "education3Desc3": "Dieser Kurs weckte meine Leidenschaft für das Programmieren und ebnete meinen Weg in die Softwareentwicklung.",
+
+  "achievements": "Erfolge:",
+  "experience1Title": "Intermediate Softwareentwickler — Sensit! GmbH, Deutschland (Sep 2023 – heute)",
+  "experience1Desc1": "Entwicklung mehrerer Desktop-Anwendungen mit dem <1>Tauri</1>-Framework, Nutzung von <1>Rust</1> für Backend-Performance und <1>React mit TypeScript</1> für ein typensicheres Frontend. Standardisierung des Stylings über Produkte und White-Label-Lösungen hinweg mit <1>Tailwind CSS</1>.",
+  "experience1Desc2": "Implementierung asynchroner, nicht-blockierender Kommunikation mit synchroner Hardware unter Verwendung des Tokio-Runtimes. Enge Zusammenarbeit mit dem Designteam, eigenständige Aufgabenverwaltung zur Verbesserung der <1>visuellen Attraktivität</1> und <1>Benutzererfahrung</1>.",
+  "experience1Desc3": "Entwurf, Entwicklung und Wartung von Rust-basierten Microservices mit einer verteilten <1>SQLite (TURSO)</1>-Datenbank für interne und externe Dienste.",
+  "experience1Desc4": "Beitrag zur Entwicklung und Optimierung komplexer CI/CD-Pipelines in <1>Azure</1>, Sicherstellung der Codequalität durch <1>rigoroses Testen, Linting, Bauen und Veröffentlichen</1> über ein Multi-Produkt-<1>Monorepo</1> hinweg.",
+  "experience1Desc5": "Leitung interner Projekte zur Steigerung der Team-Effizienz und Sicherstellung des Projekterfolgs.",
+  "experience1Achievement1": "Anerkennung für herausragende Leistungen durch eine <1>Auszeichnung mit Unternehmensanteilen und Boni</1>, was meine Beiträge zu Schlüsselprojekten und dem Gesamterfolg des Unternehmens widerspiegelt.",
+
+  "experience2Title": "Junior Softwareentwickler — Sensit! GmbH, Deutschland (Aug 2021 – Aug 2023)",
+  "experience2Desc1": "Entwicklung der Feelbelt-Mobile-Anwendung mit <1>Flutter</1> und <1>Dart</1>.",
+  "experience2Desc2": "Erfahrung mit <1>MongoDB</1> und <1>Firebase</1>.",
+  "experience2Desc3": "Implementierung von <1>Unit-Tests</1> und <1>Integrationstests</1> unter Einhaltung von <1>Clean-Code-Prinzipien</1> für Wartbarkeit und Benutzerfreundlichkeit.",
+  "experience2Desc4": "Integration von Bluetooth-Konnektivität zum Lesen und Schreiben von Firmware-Werten.",
+  "experience2Desc5": "Hinzufügen neuer Funktionen, einschließlich Fortschrittsverfolgung für Firmware-Updates und eines In-App-Videoplayers.",
+  "experience2Desc6": "Gründliche Anwendungstests vor der endgültigen Veröffentlichung zur Sicherstellung der Fehlerbehebung.",
+  "experience2Desc7": "Erweiterung der Kenntnisse in der Desktop-Anwendungsentwicklung mit <1>UWP (C#), JavaFX (Java), ElectronJS (JavaScript), Tauri (React, TypeScript) und Compose Multiplatform</1>.",
+  "experience2Achievement1": "Angebot einer Gehaltserhöhung und einer neuen Position innerhalb des Unternehmens.",
+
+  "experience3Title": "Softwareentwickler — Asirtech, Indien (Okt 2020 – Apr 2021)",
+  "experience3Desc1": "Beitrag zur Entwicklung einer Webanwendung mit <1>Java</1>, <1>Spring Boot</1>, <1>AngularJS</1> und <1>HTML</1>, mit Fokus auf Frontend und Backend-Entwicklung.",
+  "experience3Desc2": "Entwicklung einer mobilen Anwendung für ein automatisiertes Testtool <1>(ACRA)</1>, Implementierung der Benutzeroberfläche und Kernfunktionen mit <1>Dart</1> und <1>Flutter</1>.",
+  "experience3Achievement1": "Entwicklung vollständiger Frontend-Funktionalitäten der mobilen Anwendung innerhalb von 3 Monaten.",
+  "experience3Achievement2": "Nach der Probezeit Gehaltserhöhung von 110 % erhalten.",
+
+  "experience4Title": "Designingenieur — Ozone Engineering Solutions, Indien (Feb 2018 – Jul 2019)",
+  "experience4Desc1": "Entwurf innovativer 2D- und 3D-Maschinenschutzvorrichtungen, zugeschnitten auf Kundenanforderungen.",
+  "experience4Desc2": "<1>Zusammenarbeit mit Kunden</1> zur Identifizierung von Problemen und Bereitstellung kreativer Lösungen.",
+  "experience4Achievement1": "Erstellung einer Reihe von 3D und 2D-Zeichnungen für Maschinenschutzvorrichtungen, die dem Unternehmen halfen, ein Projekt im Wert von 700.000 INR zu sichern."
 }

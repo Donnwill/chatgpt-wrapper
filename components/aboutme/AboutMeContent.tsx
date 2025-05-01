@@ -5,15 +5,6 @@ import { motion } from "framer-motion";
 import StrongtagWidget from "../strongtagWidget/StrongtagWidget";
 import { Trans, useTranslation } from "react-i18next";
 
-const funFacts: string[] = [
-  "funFact1",
-  "funFact2",
-  "funFact3",
-  "funFact4",
-  "funFact5",
-  "funFact6",
-];
-
 export default function AboutMeContent() {
   const { t } = useTranslation();
 
@@ -102,3 +93,12 @@ export default function AboutMeContent() {
     </div>
   );
 }
+
+const funFacts: string[] = [
+  "funFact1",
+  "funFact2",
+  "funFact3",
+  "funFact4",
+  "funFact5",
+  "funFact6",
+];
