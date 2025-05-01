@@ -1,6 +1,6 @@
 import { Plus, X } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import DonnAvatar from "@/components/floatingWidget/DonnAvatar";
+import AIAvatar from "@/components/floatingWidget/AIAvatar";
 import PopoverContentWidget from "@/components/floatingWidget/PopoverContentWidget";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "../ui/button";
@@ -155,7 +155,7 @@ export default function FloatingWidget() {
           }
           className="fixed bottom-10 right-10"
         >
-          <DonnAvatar
+          <AIAvatar
             showIcon
             className="w-12 h-12 shadow-lg transform transition-transform hover:scale-110 hover:shadow-2xl"
           />
@@ -165,7 +165,7 @@ export default function FloatingWidget() {
           className="sm:w-[25rem] sm:h-[34rem] w-[20rem] h-[30rem] m-2 mr-6 p-0"
         >
           <div className="flex flex-row h-[5rem] pl-4 items-center gap-2">
-            <DonnAvatar className="w-12 h-12 shadow-lg" />
+            <AIAvatar className="w-12 h-12 shadow-lg" />
             <div className="flex flex-col justify-center">
               <h4 className="font-figtreeBold text-lg leading-none text-app-primarytext">
                 Donn Williams

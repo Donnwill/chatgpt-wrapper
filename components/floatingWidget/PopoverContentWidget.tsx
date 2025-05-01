@@ -4,7 +4,7 @@ import { Textarea } from "../ui/textarea";
 import { useEffect, useRef, useState } from "react";
 import { createMessage, getMessages } from "@/actions/message";
 import { sendQuestion } from "@/utils/client/openAI";
-import PetraMessageWidget from "@/components/floatingWidget/DonnMessageWidget";
+import AIMessageWidget from "@/components/floatingWidget/AIMessageWidget";
 import ChatBubble from "@/components/floatingWidget/ChatBubble";
 import UserMessageWidget from "@/components/floatingWidget/UserMessageWidget";
 import { createConversation } from "@/actions/conversation";
@@ -194,12 +194,12 @@ export default function PopoverContentWidget({
       <div ref={scrollAreaRef} className="overflow-y-auto scroll-container">
         {chats.map((chatLog, index) =>
           chatLog.role === "assistant" ? (
-            <PetraMessageWidget key={index}>
+            <AIMessageWidget key={index}>
               <ChatBubble
                 content={chatLog.content}
                 createdAt={chatLog.createdAt.toString()}
               />
-            </PetraMessageWidget>
+            </AIMessageWidget>
           ) : (
             <UserMessageWidget key={index}>
               <ChatBubble
@@ -210,9 +210,9 @@ export default function PopoverContentWidget({
           )
         )}
         {isGeneratingResponse && (
-          <PetraMessageWidget className="w-12 h-12">
+          <AIMessageWidget className="w-12 h-12">
             <img src={"/assets/gif/typing.gif"} alt="Typing..." />
-          </PetraMessageWidget>
+          </AIMessageWidget>
         )}
       </div>
       <div className="grid grid-cols-6 items-center gap-2 mt-1">

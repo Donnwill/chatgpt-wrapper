@@ -22,7 +22,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
-import DonnAvatar from "../floatingWidget/DonnAvatar";
+import AIAvatar from "../floatingWidget/AIAvatar";
 import ExternalNavButton from "../externalNavButton/ExternalNavButton";
 import { useTranslation } from "react-i18next";
 
@@ -93,7 +93,7 @@ export default function Sidebar({ navigation }: SidebarProps) {
   const ProfileInfo = () => {
     return (
       <div className="flex flex-col items-center flex-shrink-0 px-4">
-        <DonnAvatar className="w-32 h-32" />
+        <AIAvatar className="w-32 h-32" />
         <span className="text-primary text-xl font-figtreeBold">
           Donn Williams
         </span>
