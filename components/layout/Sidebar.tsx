@@ -39,8 +39,10 @@ interface SidebarProps {
 
 export default function Sidebar({ navigation }: SidebarProps) {
   const pathname = usePathname();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
+
+  const language = i18n.language;
 
   useEffect(() => {
     let prevWidth = window.innerWidth;
@@ -127,8 +129,8 @@ export default function Sidebar({ navigation }: SidebarProps) {
             tooltip="Email"
           />
           <a
-            href="/resume/Donn_Williams_Resume.pdf"
-            download="Donn_Williams.pdf"
+            href={`/resume/Donn_Williams_${language}.pdf`}
+            download={`Donn_Williams_${language}.pdf`}
           >
             <ExternalNavButton
               Icon={Download}
