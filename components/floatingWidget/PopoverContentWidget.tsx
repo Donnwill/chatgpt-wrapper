@@ -44,6 +44,7 @@ export default function PopoverContentWidget({
   ]);
   const [isGeneratingResponse, setIsGeneratingResponse] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
+  const [isTranscribing, setIsTranscribing] = useState(false);
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -92,13 +93,13 @@ export default function PopoverContentWidget({
   }
 
   async function saveMessage(conversationId: string, message: string) {
-    const currentConversationId =
-      conversationId === "" ? await startConversation() : conversationId;
-
     setIsGeneratingResponse(true);
     setMessage("");
 
     try {
+      const currentConversationId =
+        conversationId === "" ? await startConversation() : conversationId;
+
       await handleMessages(message, "user", currentConversationId);
       const assistantMessage = await fetchAssistantResponse(message);
       await handleMessages(
@@ -204,6 +205,7 @@ export default function PopoverContentWidget({
       formData.append("file", blob, "audio.webm");
 
       const transcription = await speechToText(formData);
+      setIsTranscribing(false);
 
       if (typeof transcription !== "string") {
         updateChatHistory(
@@ -222,6 +224,8 @@ export default function PopoverContentWidget({
 
   function stopRecording() {
     if (mediaRecorderRef.current?.state === "recording") {
+      setIsTranscribing(true);
+
       mediaRecorderRef.current.stop();
       setIsRecording(false);
 
@@ -260,6 +264,11 @@ export default function PopoverContentWidget({
             <img src={"/assets/gif/mic.gif"} alt="Recording..." />
           </UserMessageWidget>
         )}
+        {isTranscribing && (
+          <UserMessageWidget className="w-12 h-12">
+            <img src={"/assets/gif/typing.gif"} alt="Transcribing..." />
+          </UserMessageWidget>
+        )}
       </div>
       <div className="grid grid-cols-6 items-center gap-2 mt-1">
         <Textarea
@@ -268,14 +277,14 @@ export default function PopoverContentWidget({
             isGeneratingResponse ? "Please wait..." : "Ask you question"
           }
           value={message}
-          disabled={isGeneratingResponse}
+          disabled={isGeneratingResponse || isTranscribing}
           className="col-span-4 rounded-lg"
           onChange={(event) => setMessage(event.target.value)}
           onKeyDown={handleKeyDown}
         />
         <TooltipWidget tooltip={t("sendMessage")}>
           <Button
-            disabled={isGeneratingResponse}
+            disabled={isGeneratingResponse || isTranscribing}
             className="col-span-1"
             size={"send"}
             onClick={() => saveMessage(conversationId, message)}
@@ -284,7 +293,7 @@ export default function PopoverContentWidget({
           </Button>
         </TooltipWidget>
         <Button
-          disabled={isGeneratingResponse}
+          disabled={isGeneratingResponse || isTranscribing}
           className="col-span-1"
           size={"send"}
           onMouseDown={startRecording}
