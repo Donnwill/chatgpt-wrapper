@@ -1,4 +1,4 @@
-import { StepForward } from "lucide-react";
+import { Mic, StepForward } from "lucide-react";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { useEffect, useRef, useState } from "react";
@@ -11,6 +11,7 @@ import { createConversation } from "@/actions/conversation";
 import { useConversations } from "@/context/conversationContext";
 import TooltipWidget from "../tooltipWidget/TooltipWidget";
 import { useTranslation } from "react-i18next";
+import { speechToText } from "@/utils/client/speechToText";
 
 const role = ["user", "assistant", "system"] as const;
 export type Role = (typeof role)[number];
@@ -42,16 +43,19 @@ export default function PopoverContentWidget({
     },
   ]);
   const [isGeneratingResponse, setIsGeneratingResponse] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+  const [isTranscribing, setIsTranscribing] = useState(false);
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
 
   //Keeps the scroll always at the end, so the new chats are displayed.
   useEffect(() => {
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
     }
-  }, [chats]);
+  }, [chats, isRecording]);
 
   // Get the message history based on the opened tab
   useEffect(() => {
@@ -89,13 +93,13 @@ export default function PopoverContentWidget({
   }
 
   async function saveMessage(conversationId: string, message: string) {
-    const currentConversationId =
-      conversationId === "" ? await startConversation() : conversationId;
-
     setIsGeneratingResponse(true);
     setMessage("");
 
     try {
+      const currentConversationId =
+        conversationId === "" ? await startConversation() : conversationId;
+
       await handleMessages(message, "user", currentConversationId);
       const assistantMessage = await fetchAssistantResponse(message);
       await handleMessages(
@@ -189,6 +193,47 @@ export default function PopoverContentWidget({
     ]);
   }
 
+  async function startRecording() {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const mediaRecorder = new MediaRecorder(stream);
+    const chunks: Blob[] = [];
+
+    mediaRecorder.ondataavailable = (e) => chunks.push(e.data);
+    mediaRecorder.onstop = async () => {
+      const blob = new Blob(chunks, { type: "audio/webm" });
+      const formData = new FormData();
+      formData.append("file", blob, "audio.webm");
+
+      const transcription = await speechToText(formData);
+      setIsTranscribing(false);
+
+      if (typeof transcription !== "string") {
+        updateChatHistory(
+          "user",
+          transcription.message ?? "Something went wrong"
+        );
+      } else {
+        await saveMessage(conversationId, transcription);
+      }
+    };
+
+    mediaRecorderRef.current = mediaRecorder;
+    mediaRecorder.start();
+    setIsRecording(true);
+  }
+
+  function stopRecording() {
+    if (mediaRecorderRef.current?.state === "recording") {
+      setIsTranscribing(true);
+
+      mediaRecorderRef.current.stop();
+      setIsRecording(false);
+
+      const tracks = mediaRecorderRef.current?.stream?.getTracks();
+      tracks?.forEach((track) => track.stop());
+    }
+  }
+
   return (
     <div className="flex flex-col justify-between sm:h-[26rem] h-[22rem] p-2">
       <div ref={scrollAreaRef} className="overflow-y-auto scroll-container">
@@ -214,6 +259,16 @@ export default function PopoverContentWidget({
             <img src={"/assets/gif/typing.gif"} alt="Typing..." />
           </AIMessageWidget>
         )}
+        {isRecording && (
+          <UserMessageWidget className="w-12 h-12">
+            <img src={"/assets/gif/mic.gif"} alt="Recording..." />
+          </UserMessageWidget>
+        )}
+        {isTranscribing && (
+          <UserMessageWidget className="w-12 h-12">
+            <img src={"/assets/gif/typing.gif"} alt="Transcribing..." />
+          </UserMessageWidget>
+        )}
       </div>
       <div className="grid grid-cols-6 items-center gap-2 mt-1">
         <Textarea
@@ -222,20 +277,31 @@ export default function PopoverContentWidget({
             isGeneratingResponse ? "Please wait..." : "Ask you question"
           }
           value={message}
-          disabled={isGeneratingResponse}
-          className="col-span-5 rounded-lg"
+          disabled={isGeneratingResponse || isTranscribing}
+          className="col-span-4 rounded-lg"
           onChange={(event) => setMessage(event.target.value)}
           onKeyDown={handleKeyDown}
         />
         <TooltipWidget tooltip={t("sendMessage")}>
           <Button
-            disabled={isGeneratingResponse}
+            disabled={isGeneratingResponse || isTranscribing}
             className="col-span-1"
+            size={"send"}
             onClick={() => saveMessage(conversationId, message)}
           >
             <StepForward />
           </Button>
         </TooltipWidget>
+        <Button
+          disabled={isGeneratingResponse || isTranscribing}
+          className="col-span-1"
+          size={"send"}
+          onMouseDown={startRecording}
+          onMouseUp={stopRecording}
+          onMouseLeave={stopRecording}
+        >
+          <Mic />
+        </Button>
       </div>
     </div>
   );

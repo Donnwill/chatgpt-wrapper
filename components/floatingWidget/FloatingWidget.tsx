@@ -162,7 +162,7 @@ export default function FloatingWidget() {
         </PopoverTrigger>
         <PopoverContent
           onOpenAutoFocus={(e) => e.preventDefault()}
-          className="sm:w-[25rem] sm:h-[34rem] w-[20rem] h-[30rem] m-2 mr-6 p-0"
+          className="sm:w-[25rem] w-[20rem] m-2 mr-6 p-0 max-h-[calc(100vh-6.5rem)] overflow-y-auto hide-scroll-container"
         >
           <div className="flex flex-row h-[5rem] pl-4 items-center gap-2">
             <AIAvatar className="w-12 h-12 shadow-lg" />

@@ -26,7 +26,8 @@ module.exports = {
     			},
     			app: {
     				background: 'var(--app-background)',
-    				sidebar: 'var(--app-sidebar)',
+					sidebar: 'var(--app-sidebar)',
+					card: 'var(--app-card)',
     				sidebarButton: 'var(--app-sidebar-button)',
     				sidebarHover: 'var(--app-sidebar-hover)',
     				sidebarActive: 'var(--app-sidebar-active)',
