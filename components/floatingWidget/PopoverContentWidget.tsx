@@ -45,6 +45,7 @@ export default function PopoverContentWidget({
   const [isGeneratingResponse, setIsGeneratingResponse] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
+  const [areInputsDisabled, setAreInputsDisabled] = useState(false);
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -55,7 +56,7 @@ export default function PopoverContentWidget({
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
     }
-  }, [chats, isRecording]);
+  }, [chats, isRecording, isGeneratingResponse]);
 
   // Get the message history based on the opened tab
   useEffect(() => {
@@ -93,8 +94,8 @@ export default function PopoverContentWidget({
   }
 
   async function saveMessage(conversationId: string, message: string) {
-    setIsGeneratingResponse(true);
     setMessage("");
+    setAreInputsDisabled(true);
 
     try {
       const currentConversationId =
@@ -111,7 +112,7 @@ export default function PopoverContentWidget({
       console.error("Error saving messages", error);
     } finally {
       setIsGeneratingResponse(false);
-
+      setAreInputsDisabled(false);
       // This helps in retaining the text area focus. Using timeout is essential else it will not retain focus
       setTimeout(() => {
         textareaRef.current?.focus();
@@ -144,6 +145,8 @@ export default function PopoverContentWidget({
   }
 
   async function fetchAssistantResponse(message: string) {
+    setIsGeneratingResponse(true);
+
     const chatHistory = chats.map(({ role, content }) => ({ role, content }));
     const newMessage = { role: "user", content: message };
 
@@ -212,6 +215,7 @@ export default function PopoverContentWidget({
           "user",
           transcription.message ?? "Something went wrong"
         );
+        setAreInputsDisabled(false);
       } else {
         await saveMessage(conversationId, transcription);
       }
@@ -225,6 +229,7 @@ export default function PopoverContentWidget({
   function stopRecording() {
     if (mediaRecorderRef.current?.state === "recording") {
       setIsTranscribing(true);
+      setAreInputsDisabled(true);
 
       mediaRecorderRef.current.stop();
       setIsRecording(false);
@@ -277,14 +282,14 @@ export default function PopoverContentWidget({
             isGeneratingResponse ? "Please wait..." : "Ask you question"
           }
           value={message}
-          disabled={isGeneratingResponse || isTranscribing}
+          disabled={areInputsDisabled}
           className="col-span-4 rounded-lg"
           onChange={(event) => setMessage(event.target.value)}
           onKeyDown={handleKeyDown}
         />
         <TooltipWidget tooltip={t("sendMessage")}>
           <Button
-            disabled={isGeneratingResponse || isTranscribing}
+            disabled={areInputsDisabled}
             className="col-span-1"
             size={"send"}
             onClick={() => saveMessage(conversationId, message)}
@@ -293,7 +298,7 @@ export default function PopoverContentWidget({
           </Button>
         </TooltipWidget>
         <Button
-          disabled={isGeneratingResponse || isTranscribing}
+          disabled={areInputsDisabled}
           className="col-span-1"
           size={"send"}
           onMouseDown={startRecording}
