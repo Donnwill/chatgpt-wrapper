@@ -124,6 +124,18 @@ export default function PopoverContentWidget({
     textareaRef.current?.focus();
   }, []);
 
+  // Ask for mic permission when they start the app.
+  useEffect(() => {
+    navigator.mediaDevices
+      .getUserMedia({ audio: true })
+      .then((stream) => {
+        stream.getTracks().forEach((track) => track.stop());
+      })
+      .catch((error) => {
+        console.error("Microphone permission denied", error);
+      });
+  }, []);
+
   // Handles the message for both user and assistant. Saves to the database and updates the chat history.
   async function handleMessages(
     message: string,
