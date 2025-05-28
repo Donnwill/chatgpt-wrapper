@@ -8,6 +8,7 @@ import { ChatbotProvider } from "@/context/chatbotContext";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "@/components/ui/toaster";
 import I18nProvider from "@/components/i18nProvider/I18nProvider";
+import DashboardLayout from "@/components/layout/DashboardLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,7 @@ export default function RootLayout({
           <TooltipProvider>
             <html lang="de">
               <body className={inter.className}>
-                {children}
+                <DashboardLayout>{children}</DashboardLayout>
                 <SpeedInsights />
                 <Analytics />
                 <Toaster />
