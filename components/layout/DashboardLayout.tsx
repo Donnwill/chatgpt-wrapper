@@ -52,6 +52,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const isEducationPage = pathname === "/education";
   const isSkillsPage = pathname === "/skills";
   const isProjectsPage = pathname === "/projects";
+  
+  const headingId = `heading-${pathname.replace("/", "") || "home"}`;
+  console.log({ headingId });
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -127,7 +130,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <div className="flex flex-1 items-center justify-between">
           <Sidebar navigation={navigation} />
           <div className="flex-1 flex justify-center">
-            <h1 className="text-lg font-figtreeBold text-foreground">
+            <h1
+              id={headingId}
+              className="text-lg font-figtreeBold text-foreground"
+            >
               {pageName()}
             </h1>
           </div>
@@ -143,6 +149,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
         <div className="flex flex-col flex-1 overflow-hidden">
           <main
+            aria-labelledby={headingId}
+            role="main"
             style={{ backgroundImage: "var(--app-background)" }}
             className="flex-1 relative overflow-y-auto scroll-container focus:outline-none"
           >
@@ -166,7 +174,10 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
             <div className="py-6">
               <div className="mx-auto px-4 sm:px-6 md:px-8">
-                <h1 className="text-3xl font-figtreeBold text-app-primarytext hidden md:block">
+                <h1
+                  id={headingId}
+                  className="text-3xl font-figtreeBold text-app-primarytext hidden md:block"
+                >
                   {pageName()}
                 </h1>
               </div>

@@ -8,7 +8,10 @@ export default function HomeContent() {
   const { t } = useTranslation();
 
   return (
-    <section className="flex px-6 overflow-hidden">
+    <section
+      aria-labelledby="Short Introduction"
+      className="flex px-6 overflow-hidden"
+    >
       {/* Content */}
       <div className="flex flex-col max-w-3xl min-h-[calc(100vh-10vh)] justify-center">
         <motion.h1
@@ -34,7 +37,7 @@ export default function HomeContent() {
           <Trans
             i18nKey="motto"
             components={{
-              1: <br />,
+              1: <br aria-hidden="true" />,
               2: <span className="italic font-bold" />,
             }}
           />
