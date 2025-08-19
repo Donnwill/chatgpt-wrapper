@@ -39,17 +39,6 @@ export default function ExperienceContent() {
                   />
                 </li>
               ))}
-              <p className="font-figtreeSemiBold text-app-primarytext">
-                {t("achievements")}
-              </p>
-              <li>
-                <Trans
-                  i18nKey={"experience1Achievement1"}
-                  components={{
-                    1: <StrongtagWidget />,
-                  }}
-                />
-              </li>
             </motion.ul>
           </AccordionWidget>
         </section>
@@ -79,17 +68,6 @@ export default function ExperienceContent() {
                   />
                 </li>
               ))}
-              <p className="font-figtreeSemiBold text-app-primarytext">
-                {t("achievements")}
-              </p>
-              <li>
-                <Trans
-                  i18nKey={"experience2Achievement1"}
-                  components={{
-                    1: <StrongtagWidget />,
-                  }}
-                />
-              </li>
             </motion.ul>
           </AccordionWidget>
         </section>
@@ -119,25 +97,6 @@ export default function ExperienceContent() {
                   />
                 </li>
               ))}
-              <p className="font-figtreeSemiBold text-app-primarytext">
-                {t("achievements")}
-              </p>
-              <li>
-                <Trans
-                  i18nKey={"experience3Achievement1"}
-                  components={{
-                    1: <StrongtagWidget />,
-                  }}
-                />
-              </li>
-              <li>
-                <Trans
-                  i18nKey={"experience3Achievement2"}
-                  components={{
-                    1: <StrongtagWidget />,
-                  }}
-                />
-              </li>
             </motion.ul>
           </AccordionWidget>
         </section>
@@ -167,10 +126,6 @@ export default function ExperienceContent() {
                   />
                 </li>
               ))}
-              <p className="font-figtreeSemiBold text-app-primarytext">
-                {t("achievements")}
-              </p>
-              <li>{t("experience4Achievement1")}</li>
             </motion.ul>
           </AccordionWidget>
         </section>
@@ -185,6 +140,8 @@ const experience1Descriptions = [
   "experience1Desc3",
   "experience1Desc4",
   "experience1Desc5",
+  "experience1Desc6",
+  "experience1Desc7",
 ];
 
 const experience2Descriptions = [
@@ -192,11 +149,12 @@ const experience2Descriptions = [
   "experience2Desc2",
   "experience2Desc3",
   "experience2Desc4",
-  "experience2Desc5",
-  "experience2Desc6",
-  "experience2Desc7",
 ];
 
-const experience3Descriptions = ["experience3Desc1", "experience3Desc2"];
+const experience3Descriptions = [
+  "experience3Desc1",
+  "experience3Desc2",
+  "experience3Desc3",
+];
 
-const experience4Descriptions = ["experience4Desc1", "experience4Desc2"];
+const experience4Descriptions = ["experience4Desc1"];
