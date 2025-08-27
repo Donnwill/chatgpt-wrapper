@@ -80,7 +80,7 @@
   "education3Desc3": "This course sparked my love for programming and set the stage for my transition into software development.",
 
   "achievements": "Achievements:",
-  "experience1Title": "Software Developer — Sensit! GmbH, Germany (Sep 2023 – Present)",
+  "experience1Title": "Software Developer — Sensit! GmbH, Germany (Sep 2023 – Mar 2025)",
   "experience1Desc1": "Developed and maintained the Feelbelt app <1>(Flutter)</1>  and cross-platform desktop apps with <1>Tauri (Rust, React, TS)</1> boosting performance and type safety.",
   "experience1Desc2": "Built reusable <1>white-label UI components</1>  with Tailwind, improving maintainability and design consistency.",
   "experience1Desc3": "Implemented <1>async hardware communication</1> via Rust's Tokio runtime for reliable, responsive data flow.",

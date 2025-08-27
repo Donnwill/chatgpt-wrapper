@@ -80,7 +80,7 @@
   "education3Desc3": "Dieser Kurs weckte meine Leidenschaft für das Programmieren und ebnete meinen Weg in die Softwareentwicklung.",
 
   "achievements": "Erfolge:",
-  "experience1Title": "Softwareentwickler — Sensit! GmbH, Deutschland (Sep 2023 – heute)",
+  "experience1Title": "Softwareentwickler — Sensit! GmbH, Deutschland (Sep 2023 – Mar 2025)",
   "experience1Desc1": "Entwickelte und betreute die Feelbelt-App <1>(Flutter)</1> sowie plattformübergreifende Desktop-Apps mit <1>Tauri (Rust, React, TS)</1> wodurch Leistung und Typensicherheit verbessert wurden.",
   "experience1Desc2": "Erstellte wiederverwendbare <1>White-Label-UI-Komponenten mit Tailwind,</1> zur Verbesserung von Wartbarkeit und Design-Konsistenz.",
   "experience1Desc3": "Implementierte asynchrone Hardware-Kommunikation mit <1>Rusts Tokio-Runtime</1> für zuverlässigen und reaktionsschnellen Datenfluss.",
