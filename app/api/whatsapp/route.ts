@@ -1,63 +1,24 @@
-// pages/api/whatsapp.ts (Next.js pages dir)
-// or app/api/whatsapp/route.ts if using App Router
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const VERIFY_TOKEN = "my_secret_token";
+const VERIFY_TOKEN = "my_whatsapp_secret_123";
 
-  if (req.method === "GET") {
-    // Verification challenge
-    const mode = req.query["hub.mode"];
-    const token = req.query["hub.verify_token"];
-    const challenge = req.query["hub.challenge"];
+// GET request → webhook verification
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const mode = searchParams.get("hub.mode");
+  const token = searchParams.get("hub.verify_token");
+  const challenge = searchParams.get("hub.challenge");
 
-    if (mode && token && mode === "subscribe" && token === VERIFY_TOKEN) {
-      return res.status(200).send(challenge);
-    } else {
-      return res.status(403).send("Forbidden"); ;
-    }
+  if (mode === "subscribe" && token === VERIFY_TOKEN) {
+    return new NextResponse(challenge, { status: 200 });
   }
+  return new NextResponse("Forbidden", { status: 403 });
+}
 
-  if (req.method === "POST") {
-    try {
-      const message = req.body?.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+// POST request → incoming messages
+export async function POST(req: NextRequest) {
+  const body = await req.json();
+  console.log("Incoming WhatsApp webhook:", JSON.stringify(body, null, 2));
 
-      if (message && message.text) {
-        const userText = message.text.body;
-
-        // Call your existing OpenAI API endpoint
-        const aiRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/openAI`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            chatHistory: [],
-            newMessage: { role: "user", content: userText },
-          }),
-        });
-
-        const aiReply = await aiRes.text(); // you may need to adapt this if streaming
-
-        // Send reply back to WhatsApp
-        await fetch(`https://graph.facebook.com/v20.0/${process.env.WHATSAPP_PHONE_ID}/messages`, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            messaging_product: "whatsapp",
-            to: message.from,
-            text: { body: aiReply },
-          }),
-        });
-      }
-
-      return res.status(200).send("ok"); ;
-    } catch (err) {
-      console.error("Webhook error", err);
-      return res.status(500).send("Error"); ;
-    }
-  }
-
-  return res.status(405).send("Not allowed"); ;
+  return new NextResponse("EVENT_RECEIVED", { status: 200 });
 }
