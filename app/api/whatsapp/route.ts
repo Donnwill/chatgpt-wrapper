@@ -6,9 +6,6 @@ const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN!;
 const WHATSAPP_PHONE_ID = process.env.WHATSAPP_PHONE_ID!;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY!;
 
-// 🧠 Simple in-memory chat history (per WhatsApp user)
-const sessions: Record<string, { role: string; content: string }[]> = {};
-
 // ✅ GET → Verify webhook (already working)
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -36,13 +33,7 @@ export async function POST(req: NextRequest) {
     const userText = message.text.body;
     const from = message.from; // user’s WhatsApp number
 
-    // 🧠 Step 1: Retrieve or create conversation memory
-    const session = sessions[from] || [];
-    session.push({ role: "user", content: userText });
-
-    // Keep the last 10 messages for efficiency
-    if (session.length > 50) session.shift();
-
+    // 🔹 Step 1: Get AI response from OpenAI
     const aiResponse = await fetch(
       "https://api.openai.com/v1/chat/completions",
       {
@@ -53,7 +44,13 @@ export async function POST(req: NextRequest) {
         },
         body: JSON.stringify({
           model: "gpt-4o",
-          messages: [{ role: "system", content: SYSTEM_PROMPT }, ...session],
+          messages: [
+            {
+              role: "system",
+              content: SYSTEM_PROMPT,
+            },
+            { role: "user", content: userText },
+          ],
         }),
       }
     ).then((res) => res.json());
@@ -61,11 +58,7 @@ export async function POST(req: NextRequest) {
     const aiReply =
       aiResponse.choices?.[0]?.message?.content || "Sorry, I didn’t get that.";
 
-    // 🧠 Step 4: Save assistant’s reply in session
-    session.push({ role: "assistant", content: aiReply });
-    sessions[from] = session;
-
-    // 💬 Step 5: Send reply back to WhatsApp user
+    // 🔹 Step 2: Send reply back to WhatsApp user
     await fetch(
       `https://graph.facebook.com/v23.0/${WHATSAPP_PHONE_ID}/messages`,
       {
