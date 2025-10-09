@@ -1,8 +1,12 @@
+import { SYSTEM_PROMPT } from "@/config/systemPrompt";
 import { NextRequest, NextResponse } from "next/server";
 
 const VERIFY_TOKEN = "my_whatsapp_secret_123";
+const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN!;
+const WHATSAPP_PHONE_ID = process.env.WHATSAPP_PHONE_ID!;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY!;
 
-// GET request → webhook verification
+// ✅ GET → Verify webhook (already working)
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const mode = searchParams.get("hub.mode");
@@ -15,10 +19,66 @@ export async function GET(req: NextRequest) {
   return new NextResponse("Forbidden", { status: 403 });
 }
 
-// POST request → incoming messages
+// ✅ POST → Handle incoming messages and reply via OpenAI
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  console.log("Incoming WhatsApp webhook:", JSON.stringify(body, null, 2));
+  console.log("Incoming webhook:", JSON.stringify(body, null, 2));
 
-  return new NextResponse("EVENT_RECEIVED", { status: 200 });
+  try {
+    const message = body?.entry?.[0]?.changes?.[0]?.value?.messages?.[0];
+    if (!message || !message.text) {
+      return new NextResponse("No message text", { status: 200 });
+    }
+
+    const userText = message.text.body;
+    const from = message.from; // user’s WhatsApp number
+
+    // 🔹 Step 1: Get AI response from OpenAI
+    const aiResponse = await fetch(
+      "https://api.openai.com/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${OPENAI_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "gpt-4o",
+          messages: [
+            {
+              role: "system",
+              content: SYSTEM_PROMPT,
+            },
+            { role: "user", content: userText },
+          ],
+        }),
+      }
+    ).then((res) => res.json());
+
+    const aiReply =
+      aiResponse.choices?.[0]?.message?.content || "Sorry, I didn’t get that.";
+
+    // 🔹 Step 2: Send reply back to WhatsApp user
+    await fetch(
+      `https://graph.facebook.com/v23.0/${WHATSAPP_PHONE_ID}/messages`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${WHATSAPP_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messaging_product: "whatsapp",
+          to: from,
+          type: "text",
+          text: { body: aiReply },
+        }),
+      }
+    );
+
+    return new NextResponse("EVENT_RECEIVED", { status: 200 });
+  } catch (err) {
+    console.error("Error handling message:", err);
+    return new NextResponse("Error", { status: 500 });
+  }
 }
