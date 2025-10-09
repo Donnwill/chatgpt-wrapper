@@ -41,37 +41,41 @@ export async function POST(req: NextRequest) {
     session.push({ role: "user", content: userText });
 
     // Keep the last 10 messages for efficiency
-    if (session.length > 10) session.shift();
+    if (session.length > 50) session.shift();
 
     // ⏳ Step 2: Send “typing” indicator to WhatsApp
-    await fetch(`https://graph.facebook.com/v23.0/${WHATSAPP_PHONE_ID}/messages`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${WHATSAPP_TOKEN}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        messaging_product: "whatsapp",
-        to: from,
-        status: "composing", // Shows “typing…” status (if supported)
-      }),
-    }).catch((e) => console.warn("Typing indicator failed:", e));
+    await fetch(
+      `https://graph.facebook.com/v23.0/${WHATSAPP_PHONE_ID}/messages`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${WHATSAPP_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messaging_product: "whatsapp",
+          to: from,
+          type: "text",
+          text: { body: "🤖 AI is thinking..." },
+        }),
+      }
+    );
 
     // 🤖 Step 3: Get AI response from OpenAI
-    const aiResponse = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "gpt-4o",
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          ...session,
-        ],
-      }),
-    }).then((res) => res.json());
+    const aiResponse = await fetch(
+      "https://api.openai.com/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${OPENAI_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "gpt-4o",
+          messages: [{ role: "system", content: SYSTEM_PROMPT }, ...session],
+        }),
+      }
+    ).then((res) => res.json());
 
     const aiReply =
       aiResponse.choices?.[0]?.message?.content || "Sorry, I didn’t get that.";
@@ -81,19 +85,22 @@ export async function POST(req: NextRequest) {
     sessions[from] = session;
 
     // 💬 Step 5: Send reply back to WhatsApp user
-    await fetch(`https://graph.facebook.com/v23.0/${WHATSAPP_PHONE_ID}/messages`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${WHATSAPP_TOKEN}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        messaging_product: "whatsapp",
-        to: from,
-        type: "text",
-        text: { body: aiReply },
-      }),
-    });
+    await fetch(
+      `https://graph.facebook.com/v23.0/${WHATSAPP_PHONE_ID}/messages`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${WHATSAPP_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          messaging_product: "whatsapp",
+          to: from,
+          type: "text",
+          text: { body: aiReply },
+        }),
+      }
+    );
 
     return new NextResponse("EVENT_RECEIVED", { status: 200 });
   } catch (err) {
