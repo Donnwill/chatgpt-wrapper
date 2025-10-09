@@ -43,25 +43,6 @@ export async function POST(req: NextRequest) {
     // Keep the last 10 messages for efficiency
     if (session.length > 50) session.shift();
 
-    // ⏳ Step 2: Send “typing” indicator to WhatsApp
-    await fetch(
-      `https://graph.facebook.com/v23.0/${WHATSAPP_PHONE_ID}/messages`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${WHATSAPP_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          messaging_product: "whatsapp",
-          to: from,
-          type: "text",
-          text: { body: "🤖 AI is thinking..." },
-        }),
-      }
-    );
-
-    // 🤖 Step 3: Get AI response from OpenAI
     const aiResponse = await fetch(
       "https://api.openai.com/v1/chat/completions",
       {
